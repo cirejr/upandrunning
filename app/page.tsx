@@ -2,13 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CardContent, Card } from "@/components/ui/card";
 import Link from "next/link";
-import {
-  RocketIcon,
-  ServerCog,
-  ClockIcon,
-  CodeIcon,
-  CheckIcon,
-} from "lucide-react";
+import { ServerCog, ClockIcon, CodeIcon, CheckIcon } from "lucide-react";
+import { ModeToggle } from "@/components/global/mode-toggle";
 
 export default function Home() {
   return (
@@ -16,11 +11,11 @@ export default function Home() {
       <header className='px-4 lg:px-6 h-14 flex items-center'>
         <Link
           className='flex items-center justify-center text-3xl font-bold tracking-tighter'
-          href='#'
+          href='/'
         >
           UPnRunning
         </Link>
-        <nav className='ml-auto flex gap-4 sm:gap-6'>
+        <nav className='ml-auto flex items-center gap-4 sm:gap-6'>
           <Link
             className='text-sm font-medium hover:underline underline-offset-4'
             href='#features'
@@ -39,6 +34,7 @@ export default function Home() {
           >
             Pricing
           </Link>
+          <ModeToggle />
         </nav>
       </header>
       <main className='flex-1'>
