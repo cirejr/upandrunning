@@ -1,10 +1,16 @@
 import React from "react";
+import { GridDotBackgroundWrapper } from "./grid-dot-background";
+import { Spotlight } from "../ui/spotlight";
 import { Button } from "../ui/button";
 
-export default function Hero() {
+export default function GridSpotlightHero() {
   return (
-    <section className='w-full py-12 md:py-24 lg:py-24 xl:py-32'>
-      <div className='container px-4 md:px-6'>
+    <section id='features'>
+      <GridDotBackgroundWrapper isFaded isGridSmall className='h-[35rem]'>
+        <Spotlight
+          className='-top-40 left-0 md:left-60 md:-top-20'
+          fill='white'
+        />
         <div className='flex flex-col items-center space-y-4 text-center'>
           <div className='space-y-2'>
             <h1 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none'>
@@ -28,7 +34,7 @@ export default function Hero() {
             <Button variant='outline'>View Demo</Button>
           </div>
         </div>
-      </div>
+      </GridDotBackgroundWrapper>
     </section>
   );
 }

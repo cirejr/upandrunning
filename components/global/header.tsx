@@ -35,7 +35,7 @@ export default function Header({
             className='text-sm font-medium hover:underline underline-offset-4'
             href={link.href}
           >
-            {link.name}
+            {link.title}
           </Link>
         ))}
       </nav>

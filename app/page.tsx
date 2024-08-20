@@ -6,13 +6,19 @@ import { ServerCog, ClockIcon, CodeIcon, CheckIcon } from "lucide-react";
 import { ModeToggle } from "@/components/global/mode-toggle";
 import Header from "@/components/global/header";
 import Hero from "@/components/global/hero";
+import GridSpotlightHero from "@/components/global/grid-spotlight-hero";
+import Features from "@/components/global/features";
+import { Features02 } from "@/components/global/features02";
+import Benefits from "@/components/global/benefits";
 
 export default function Home() {
   return (
     <div className='flex flex-col min-h-[100dvh]'>
       <Header isSticky isBlurry />
       <main className='flex-1'>
-        <Hero />
+        <GridSpotlightHero />
+        <Features />
+        <Benefits />
         <section
           id='features'
           className='w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800'
