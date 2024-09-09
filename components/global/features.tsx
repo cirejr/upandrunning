@@ -61,8 +61,8 @@ export default function Features() {
     },
   ];
   return (
-    <section className='dark:bg-darker-bleu dark:bg-cover dark:bg-no-repeat dark:bg-left-top py-14 backdrop:filter backdrop-blur-xl'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-7'>
+    <section className='dark:none py-14 backdrop-blur-xl backdrop:filter dark:bg-cover dark:bg-left-top dark:bg-no-repeat'>
+      <div className='mx-auto mb-7 max-w-7xl px-4 text-center sm:px-6 lg:px-8'>
         <h1 className='text-3xl font-bold tracking-tight sm:text-4xl'>
           Key Features
         </h1>
@@ -71,8 +71,8 @@ export default function Features() {
           project.
         </p>
       </div>
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto container'>
-        {features.map((feature, index) => (
+      <div className='container relative z-10 mx-auto grid max-w-7xl grid-cols-2 py-10 md:grid-cols-3 lg:grid-cols-4'>
+        {tools.map((feature, index) => (
           <Feature key={feature.title} {...feature} index={index} />
         ))}
       </div>
@@ -100,22 +100,22 @@ const Feature = ({
       )}
     >
       {index < 4 && (
-        <div className='opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-transparent pointer-events-none backdrop-blur-md backdrop-filter' />
+        <div className='pointer-events-none absolute inset-0 h-full w-full bg-transparent opacity-0 backdrop-blur-md backdrop-filter transition duration-200 group-hover/feature:opacity-100' />
       )}
       {index >= 4 && (
-        <div className='opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-transparent pointer-events-none backdrop-blur-md backdrop-filter' />
+        <div className='pointer-events-none absolute inset-0 h-full w-full bg-transparent opacity-0 backdrop-blur-md backdrop-filter transition duration-200 group-hover/feature:opacity-100' />
       )}
-      <div className='mb-4 relative z-10 px-10 text-emerald-600 dark:text-emerald-400'>
+      <div className='relative z-10 mb-4 px-10 text-emerald-600 dark:text-emerald-400'>
         {icon}
       </div>
-      <div className='text-lg font-bold mb-2 relative z-10 px-10'>
-        <div className='absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-emerald-300 dark:bg-emerald-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center' />
-        <span className='group-hover/feature:translate-x-2 transition duration-200 inline-block'>
+      <div className='relative z-10 mb-2 px-10 text-lg font-bold'>
+        <div className='absolute inset-y-0 left-0 h-6 w-1 origin-center rounded-br-full rounded-tr-full bg-emerald-300 transition-all duration-200 group-hover/feature:h-8 group-hover/feature:bg-blue-500 dark:bg-emerald-700' />
+        <span className='inline-block transition duration-200 group-hover/feature:translate-x-2'>
           {title}
         </span>
       </div>
       {description && (
-        <p className='text-sm max-w-xs relative z-10 px-10'>{description}</p>
+        <p className='relative z-10 max-w-xs px-10 text-sm'>{description}</p>
       )}
     </div>
   );
@@ -143,16 +143,16 @@ const tools = [
         height='512'
         viewBox='0 0 512 512'
         width='512'
-        className='w-12 h-12 '
+        className='h-12 w-12'
         xmlns='http://www.w3.org/2000/svg'
       >
         <rect fill='#3178c6' height='512' rx='50' width='512' />
         <rect fill='#3178c6' height='512' rx='50' width='512' />
         <path
-          clip-rule='evenodd'
+          clipRule='evenodd'
           d='m316.939 407.424v50.061c8.138 4.172 17.763 7.3 28.875 9.386s22.823 3.129 35.135 3.129c11.999 0 23.397-1.147 34.196-3.442 10.799-2.294 20.268-6.075 28.406-11.342 8.138-5.266 14.581-12.15 19.328-20.65s7.121-19.007 7.121-31.522c0-9.074-1.356-17.026-4.069-23.857s-6.625-12.906-11.738-18.225c-5.112-5.319-11.242-10.091-18.389-14.315s-15.207-8.213-24.18-11.967c-6.573-2.712-12.468-5.345-17.685-7.9-5.217-2.556-9.651-5.163-13.303-7.822-3.652-2.66-6.469-5.476-8.451-8.448-1.982-2.973-2.974-6.336-2.974-10.091 0-3.441.887-6.544 2.661-9.308s4.278-5.136 7.512-7.118c3.235-1.981 7.199-3.52 11.894-4.615 4.696-1.095 9.912-1.642 15.651-1.642 4.173 0 8.581.313 13.224.938 4.643.626 9.312 1.591 14.008 2.894 4.695 1.304 9.259 2.947 13.694 4.928 4.434 1.982 8.529 4.276 12.285 6.884v-46.776c-7.616-2.92-15.937-5.084-24.962-6.492s-19.381-2.112-31.066-2.112c-11.895 0-23.163 1.278-33.805 3.833s-20.006 6.544-28.093 11.967c-8.086 5.424-14.476 12.333-19.171 20.729-4.695 8.395-7.043 18.433-7.043 30.114 0 14.914 4.304 27.638 12.912 38.172 8.607 10.533 21.675 19.45 39.204 26.751 6.886 2.816 13.303 5.579 19.25 8.291s11.086 5.528 15.415 8.448c4.33 2.92 7.747 6.101 10.252 9.543 2.504 3.441 3.756 7.352 3.756 11.733 0 3.233-.783 6.231-2.348 8.995s-3.939 5.162-7.121 7.196-7.147 3.624-11.894 4.771c-4.748 1.148-10.303 1.721-16.668 1.721-10.851 0-21.597-1.903-32.24-5.71-10.642-3.806-20.502-9.516-29.579-17.13zm-84.159-123.342h64.22v-41.082h-179v41.082h63.906v182.918h50.874z'
           fill='#fff'
-          fill-rule='evenodd'
+          fillRule='evenodd'
         />
       </svg>
     ),
@@ -160,7 +160,7 @@ const tools = [
   {
     title: "Supabase",
     icon: (
-      <svg viewBox='0 0 109 113' className='w-12 h-12'>
+      <svg viewBox='0 0 109 113' className='h-12 w-12'>
         <path
           d='M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347z'
           fill='url(#supabase-icon-mark_svg__a)'
@@ -207,7 +207,7 @@ const tools = [
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 256 256'
-        className='w-12 h-12 text-black dark:text-white'
+        className='h-12 w-12 text-black dark:text-white'
       >
         <rect width='256' height='256' fill='none' />
         <line
@@ -241,7 +241,7 @@ const tools = [
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 54 33'
-        className='w-12 h-12'
+        className='h-12 w-12'
       >
         <g clipPath='url(#prefix__clip0)'>
           <path
@@ -265,7 +265,7 @@ const tools = [
       <svg
         viewBox='160 60 400 400'
         fill='none'
-        className='w-12 h-12 fill-black dark:fill-white'
+        className='h-12 w-12 fill-black dark:fill-white'
         xmlns='http://www.w3.org/2000/svg'
       >
         <path d='M186 447.471V154H318.062C336.788 154 353.697 158.053 368.79 166.158C384.163 174.263 396.181 185.443 404.845 199.698C413.51 213.672 417.842 229.604 417.842 247.491C417.842 265.938 413.51 282.568 404.845 297.381C396.181 311.915 384.302 323.375 369.209 331.759C354.117 340.144 337.067 344.337 318.062 344.337H253.917V447.471H186ZM348.667 447.471L274.041 314.99L346.99 304.509L430 447.471H348.667ZM253.917 289.835H311.773C319.04 289.835 325.329 288.298 330.639 285.223C336.229 281.869 340.421 277.258 343.216 271.388C346.291 265.519 347.828 258.811 347.828 251.265C347.828 243.718 346.151 237.15 342.797 231.56C339.443 225.691 334.552 221.219 328.124 218.144C321.975 215.07 314.428 213.533 305.484 213.533H253.917V289.835Z' />
@@ -278,7 +278,7 @@ const tools = [
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='50 50 600 120'
-        className=' fill-[#635bff]'
+        className='fill-[#635bff]'
       >
         <g>
           <path
@@ -322,19 +322,19 @@ const tools = [
     icon: (
       <svg
         viewBox='0 0 210 232'
-        className='w-12 h-12'
+        className='h-12 w-12'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M208.687 31.859L30.0947 167.73C8.16388 127.966 0.567559 79.9975 0 51.2275V33.6181C0 31.0567 2.7788 29.5628 4.16851 29.1356C33.5617 20.2778 93.2465 2.30524 96.8378 1.28069C100.429 0.256138 103.464 0 104.534 0H104.631C105.7 0 108.735 0.256138 112.327 1.28069C115.918 2.30524 175.603 20.2778 204.996 29.1356C206.03 29.4533 207.832 30.3613 208.687 31.859Z'
           fill='url(#paint0_linear_128_61)'
         />
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M30.0938 167.952L208.686 32.0815C208.981 32.5983 209.164 33.1842 209.164 33.8406V51.45C208.202 100.223 187.038 204.172 110.081 229.786C109.013 230.213 106.49 231.067 104.951 231.067H104.212C102.673 231.067 100.15 230.213 99.0814 229.786C67.5193 219.281 45.3415 195.6 30.0938 167.952Z'
           fill='url(#paint1_linear_128_61)'
         />
@@ -351,8 +351,8 @@ const tools = [
           fill='#E3E2FA'
         />
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M96.2435 124.475C92.6077 124.796 83.4111 123.192 78.9197 119.342C74.0971 115.208 71.541 109.718 71.541 101.697C71.541 91.7469 80.5239 81.1654 93.0355 81.4861C104.919 81.7907 112.934 88.4894 114.53 99.1307C115.363 104.684 114.514 107.353 113.854 109.426C113.752 109.749 113.654 110.057 113.568 110.359C113.247 111.429 112.798 113.76 113.568 114.53C114.337 115.3 126.079 126.614 131.854 132.174C132.388 132.816 133.458 134.42 133.458 135.703V141.799C133.458 142.761 133.201 143.082 132.175 143.082H119.342C118.594 142.975 117.096 142.248 117.096 140.195C117.096 138.006 116.863 137.684 116.396 137.039C116.316 136.928 116.228 136.807 116.134 136.666C115.492 135.703 114.209 135.703 112.926 135.703C111.643 135.703 110.68 135.382 110.039 134.741C109.397 134.099 109.397 133.137 109.718 131.854C110.039 130.57 109.718 129.287 109.076 128.966C108.974 128.915 108.856 128.848 108.723 128.772C108.019 128.372 106.896 127.734 105.547 128.004C103.943 128.325 101.697 128.004 100.414 126.721C99.131 125.437 97.5267 124.401 96.2435 124.475ZM87.5814 100.094C90.2391 100.094 92.3936 97.9393 92.3936 95.2816C92.3936 92.6239 90.2391 90.4694 87.5814 90.4694C84.9237 90.4694 82.7692 92.6239 82.7692 95.2816C82.7692 97.9393 84.9237 100.094 87.5814 100.094Z'
           fill='url(#paint3_linear_128_61)'
         />

@@ -1,30 +1,47 @@
 import React from "react";
 import { Grid } from "./grid-pattern";
+import {
+  FaLock,
+  FaDatabase,
+  FaCreditCard,
+  FaEnvelope,
+  FaPalette,
+  FaCode,
+} from "react-icons/fa";
 
 export function Features02() {
   return (
-    <div className='py-20'>
-      <div className='px-8 mb-20'>
-        <h4 className='text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white'>
-          Packed with thousands of features
+    <div className=''>
+      <div className='mb-20 px-8'>
+        <h4 className='mx-auto max-w-5xl text-center text-3xl font-bold tracking-tight text-black dark:text-white lg:text-5xl lg:leading-tight'>
+          Packed with all the essential SaaS features
         </h4>
 
-        <p className='text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-slate-500 text-center font-normal dark:text-slate-300'>
-          From Image generation to video generation, Everything AI has APIs for
-          literally everything. It can even create this website copy for you.
+        <p className='mx-auto my-4 max-w-2xl text-center text-sm font-normal text-muted-foreground lg:text-base'>
+          From authentication to payment integration, our boilerplate has
+          everything you need to launch your SaaS product quickly. It's like
+          having a team of expert developers at your fingertips.
         </p>
       </div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-2 max-w-7xl mx-auto'>
+
+      <div className='z-0 mx-auto grid w-full grid-cols-1 justify-evenly gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-10 lg:grid-cols-3'>
         {grid.map((feature) => (
           <div
             key={feature.title}
-            className='relative bg-gradient-to-b dark:from-slate-800 from-slate-100 dark:to-slate-900 to-white p-6 rounded-3xl overflow-hidden'
+            className='w-7/8 relative overflow-hidden rounded-lg bg-gradient-to-b from-zinc-100 to-white p-6 dark:from-zinc-800 dark:to-background'
           >
             <Grid size={20} />
-            <p className='text-base font-bold text-slate-800 dark:text-white relative z-20'>
-              {feature.title}
-            </p>
-            <p className='text-slate-600 dark:text-slate-400 mt-4 text-base font-normal relative z-20'>
+            <div className='flex items-center gap-2'>
+              {feature.icon && (
+                <div className='flex w-fit items-center justify-center rounded-md border-r border-t bg-secondary p-4 shadow-lg dark:border-r-white dark:border-t-white dark:border-opacity-10'>
+                  {feature.icon}
+                </div>
+              )}
+              <p className='relative text-base font-bold text-zinc-800 dark:text-white'>
+                {feature.title}
+              </p>
+            </div>
+            <p className='relative mt-4 text-base font-normal text-foreground'>
               {feature.description}
             </p>
           </div>
@@ -36,43 +53,39 @@ export function Features02() {
 
 const grid = [
   {
-    title: "HIPAA and SOC2 Compliant",
+    title: "Authentication System",
     description:
-      "Our applications are HIPAA and SOC2 compliant, your data is safe with us, always.",
+      "Secure, pre-configured authentication system with support for multiple providers, saving you hours of setup time.",
+    icon: <FaLock />,
   },
   {
-    title: "Automated Social Media Posting",
+    title: "Database Integration",
     description:
-      "Schedule and automate your social media posts across multiple platforms to save time and maintain a consistent online presence.",
+      "Seamless database integration with ORM and migrations, allowing you to focus on building your application logic.",
+    icon: <FaDatabase />,
   },
   {
-    title: "Advanced Analytics",
+    title: "Payment Gateway",
     description:
-      "Gain insights into your social media performance with detailed analytics and reporting tools to measure engagement and ROI.",
+      "Out-of-the-box Stripe integration for handling payments, subscriptions, and billing with minimal setup.",
+    icon: <FaCreditCard />,
   },
   {
-    title: "Content Calendar",
+    title: "Email Service",
     description:
-      "Plan and organize your social media content with an intuitive calendar view, ensuring you never miss a post.",
+      "Transactional email service setup, ready to send notifications, password resets, and marketing emails.",
+    icon: <FaEnvelope />,
   },
   {
-    title: "Audience Targeting",
+    title: "UI Component Library",
     description:
-      "Reach the right audience with advanced targeting options, including demographics, interests, and behaviors.",
+      "Extensive library of pre-built, customizable UI components to rapidly create a polished user interface.",
+    icon: <FaPalette />,
   },
   {
-    title: "Social Listening",
+    title: "API Boilerplate",
     description:
-      "Monitor social media conversations and trends to stay informed about what your audience is saying and respond in real-time.",
-  },
-  {
-    title: "Customizable Templates",
-    description:
-      "Create stunning social media posts with our customizable templates, designed to fit your brand's unique style and voice.",
-  },
-  {
-    title: "Collaboration Tools",
-    description:
-      "Work seamlessly with your team using our collaboration tools, allowing you to assign tasks, share drafts, and provide feedback in real-time.",
+      "RESTful API structure in place, complete with error handling, rate limiting, and documentation generation.",
+    icon: <FaCode />,
   },
 ];

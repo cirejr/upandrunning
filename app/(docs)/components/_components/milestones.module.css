@@ -1,0 +1,56 @@
+.milestoneWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.milestoneLine {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 0;
+}
+
+.milestonePhase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.milestoneIcon {
+  width: 16px;
+  height: 16px;
+  background-color: #00ff00;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin-bottom: 8px;
+}
+
+.milestoneLine::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #555;
+  z-index: -1;
+}
+
+.dependencyWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.dependencyItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dependencyLine {
+  width: 50px;
+  height: 2px;
+  background-color: #00ff00;
+  margin-right: 10px;
+}

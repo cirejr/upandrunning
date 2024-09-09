@@ -1,14 +1,12 @@
 import {
   Sheet,
   SheetContent,
-  SheetFooter,
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { links } from "@/config/site";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { ModeToggle } from "./mode-toggle";
 
 export default function MobileSideMenu({ isGlassy }: { isGlassy?: boolean }) {
   return (

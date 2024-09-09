@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+import { ClassValue } from "clsx";
 import React from "react";
 
 export default function GradientCard({
@@ -6,17 +8,23 @@ export default function GradientCard({
   description,
   children,
   isBottomShaded,
+  className,
 }: {
   icon?: React.ReactNode;
   title?: string;
   description?: string;
   children?: React.ReactNode;
   isBottomShaded?: boolean;
+  className?: ClassValue;
 }) {
   return (
-    <div className='relative mx-auto h-auto max-w-[360px]'>
+    <div className={cn("relative mx-auto h-auto max-w-[360px]", className)}>
       <div className='absolute inset-10 bg-white opacity-30 blur-2xl dark:bg-gradient-to-r dark:from-blue-500 dark:to-purple-500'></div>
-      <div className='relative overflow-hidden rounded-lg border border-gray-400 border-opacity-30 bg-slate-600 bg-opacity-20 p-6 backdrop-blur-xl backdrop-filter dark:border-gray-500 dark:bg-gray-900 dark:bg-opacity-20'>
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-lg border bg-slate-600 bg-opacity-20 p-6 backdrop-blur-xl backdrop-filter dark:bg-gray-900 dark:bg-opacity-20",
+        )}
+      >
         <div className='z-30'>
           {icon}
           <h3 className='mb-2 text-xl font-bold'>{title}</h3>

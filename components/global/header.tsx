@@ -15,11 +15,11 @@ export default function Header({
   return (
     <header
       className={`container h-14 flex items-center justify-between w-full ${
-        isSticky && !isBlurry && "sticky top-0 z-10 bg-background"
+        isSticky && !isBlurry && "sticky top-0 z-50 bg-background"
       } ${
         isSticky &&
         isBlurry &&
-        "sticky top-0 z-10 from-transparent dark:from-transparent backdrop-blur-md"
+        "sticky top-0 z-50 from-transparent dark:from-transparent backdrop-blur-md"
       }`}
     >
       <Link

@@ -40,6 +40,9 @@ const config = {
         "dark-green": "url('/assets/images/dark-green-bg.webp')",
         "wave-strings": "url('/assets/images/wave-strings-bg.jpg')",
         "zinc-point": "url('/assets/images/bg-zinc.jpg')",
+        "pink-blue-gradient": "url('/assets/images/pink-blue-gradient.jpg')",
+        "light-blue-point": "url('/assets/images/light-blue-point.jpg')",
+        "soft-blue-gradient": "url('/assets/images/soft-blue-gradient.jpg')",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -75,6 +78,12 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        /* blurry blob starts*/
+        filter: {
+          "blur-20": "blur(20px)",
+          "blur-25": "blur(25px)",
+        },
+        /* blurry blob ends*/
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -100,11 +109,22 @@ const config = {
             transform: "translate(-50%,-40%) scale(1)",
           },
         },
+        /* blurry blob keyframes start*/
+        "pop-blob": {
+          "0%": { transform: "scale(1)" },
+          "33%": { transform: "scale(1.2)" },
+          "66%": { transform: "scale(0.8)" },
+          "100%": { transform: "scale(1)" },
+        },
+        /* blurry blob keyframes end*/
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         spotlight: "spotlight 2s ease .75s 1 forwards",
+        /* blurry blob animation start*/
+        "pop-blob": "pop-blob 5s infinite",
+        /* blurry blob animation end*/
       },
     },
   },
