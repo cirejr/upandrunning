@@ -29,17 +29,18 @@ export default function Benefits() {
     <section id='benefits' className='relative'>
       <main className='container overflow-x-hidden py-14 backdrop-blur-3xl backdrop-filter'>
         <div className='mb-20 px-8'>
-          <h1 className='text-center text-3xl font-bold sm:text-4xl'>
-            We save you countless hours of setup time
+          <h1 className='text-center text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none'>
+            We save you countless <span className='text-primary'>hours</span> of
+            setup time
           </h1>
-          <p className='mx-auto my-4 max-w-2xl text-center text-sm font-normal text-slate-500 dark:text-slate-300 lg:text-base'>
+          <p className='mx-auto my-4 max-w-2xl text-center text-muted-foreground md:text-xl'>
             We've got you covered. We'll handle the setup for you, so you can
             focus on building your app.
           </p>
         </div>
         <PlusCornerSection className='-mb-12 border py-10'>
           <div className='px-8'>
-            <h4 className='mx-auto max-w-5xl text-center text-xl font-medium tracking-tight text-black dark:text-white lg:text-2xl lg:leading-tight'>
+            <h4 className='mx-auto max-w-5xl text-center text-2xl font-semibold'>
               You go from this <span className='text-red-500'>unending </span>{" "}
               waste of time
             </h4>

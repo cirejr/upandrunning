@@ -8,11 +8,11 @@ export default function EmailWaitlist() {
     <section className='bg-gradient-transparent relative w-full border-b border-t py-12 md:py-24 lg:py-32'>
       <Separator
         orientation='vertical'
-        className='absolute -top-[50px] left-[257px] h-[36rem] w-[0.5px]'
+        className='absolute -top-[50px] left-[15px] h-[25rem] w-[0.5px] md:left-[25px] md:h-[32rem] lg:left-[257px]'
       />
       <Separator
         orientation='vertical'
-        className='absolute -top-[50px] right-[257px] h-[36rem] w-[0.5px]'
+        className='absolute -top-[50px] right-[15px] h-[25rem] w-[0.5px] md:right-[25px] md:h-[32rem] lg:right-[257px]'
       />
       <div className='container px-4 md:px-6'>
         <div className='flex flex-col items-center space-y-4 text-center'>

@@ -4,6 +4,8 @@ import { ModeToggle } from "./mode-toggle";
 import { links } from "@/config/site";
 import { Button } from "../ui/button";
 import MobileSideMenu from "./mobile-side-menu";
+import { Github } from "lucide-react";
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
 
 export default function Header({
   isSticky,
@@ -40,9 +42,16 @@ export default function Header({
           </Link>
         ))}
       </nav>
-      <div className='flex items-center gap-4'>
-        <Button className='hidden md:block' variant='outline'>
-          Get Started
+      <div className='flex items-center gap-1'>
+        <Button size='icon' variant='ghost' asChild>
+          <Link href='https://github.com/cirejr/upandrunning'>
+            <FaGithub className='h-[1.2rem] w-[1.2rem]' />
+          </Link>
+        </Button>
+        <Button size='icon' variant='ghost' asChild>
+          <Link href='https://x.com/cirejr_'>
+            <FaXTwitter className='h-[1.2rem] w-[1.2rem]' />
+          </Link>
         </Button>
         <ModeToggle />
       </div>

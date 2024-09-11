@@ -13,11 +13,11 @@ export function Features02() {
   return (
     <div className=''>
       <div className='mb-20 px-8'>
-        <h4 className='mx-auto max-w-5xl text-center text-3xl font-bold tracking-tight text-black dark:text-white lg:text-5xl lg:leading-tight'>
+        <h4 className='mx-auto max-w-5xl text-center text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none'>
           Packed with all the essential SaaS features
         </h4>
 
-        <p className='mx-auto my-4 max-w-2xl text-center text-sm font-normal text-muted-foreground lg:text-base'>
+        <p className='mx-auto my-4 max-w-2xl text-center text-muted-foreground md:text-xl'>
           From authentication to payment integration, our boilerplate has
           everything you need to launch your SaaS product quickly. It's like
           having a team of expert developers at your fingertips.
