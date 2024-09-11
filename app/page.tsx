@@ -18,13 +18,16 @@ import { CurvedArrow01, CurvedArrow02 } from "@/components/icons/curved-arrow";
 import PlusCornerSection from "./(docs)/components/_components/plus-section";
 import { Grid } from "@/components/global/grid-pattern";
 import PricingSection from "@/components/global/sections/pricing";
+import { NotificationCards } from "@/components/global/notification-cards";
+import Footer from "@/components/global/sections/footer";
+import EmailWaitlist from "@/components/global/sections/email-waitlist";
 
 export default function Home() {
   return (
     <div className='flex min-h-[100dvh] flex-col'>
       <Header isSticky isBlurry />
       <main className='flex-1'>
-        <GridSpotlightHero />
+        <Hero />
         <Features />
         <Benefits />
         <div className='container -mt-14'>
@@ -53,48 +56,9 @@ export default function Home() {
             <PricingSection />
           </div>
         </section>
-        <section className='w-full py-12 md:py-24 lg:py-32'>
-          <div className='container px-4 md:px-6'>
-            <div className='flex flex-col items-center space-y-4 text-center'>
-              <div className='space-y-2'>
-                <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
-                  Ready to Supercharge Your Development?
-                </h2>
-                <p className='mx-auto max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-                  Join thousands of developers and companies who are already
-                  saving time and building better with QuickStart Boilerplate.
-                </p>
-              </div>
-              <div className='w-full max-w-sm space-y-2'>
-                <form className='flex space-x-2'>
-                  <Input
-                    className='max-w-lg flex-1'
-                    placeholder='Enter your email'
-                    type='email'
-                  />
-                  <Button type='submit'>Get Started</Button>
-                </form>
-                <p className='text-xs text-gray-500 dark:text-gray-400'>
-                  Start your free trial. No credit card required.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <EmailWaitlist />
       </main>
-      <footer className='flex w-full shrink-0 flex-col items-center gap-2 border-t px-4 py-6 sm:flex-row md:px-6'>
-        <p className='text-xs text-gray-500 dark:text-gray-400'>
-          © 2024 QuickStart Boilerplate. All rights reserved.
-        </p>
-        <nav className='flex gap-4 sm:ml-auto sm:gap-6'>
-          <Link className='text-xs underline-offset-4 hover:underline' href='#'>
-            Terms of Service
-          </Link>
-          <Link className='text-xs underline-offset-4 hover:underline' href='#'>
-            Privacy
-          </Link>
-        </nav>
-      </footer>
+      <Footer />
     </div>
   );
 }

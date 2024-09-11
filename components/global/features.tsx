@@ -1,67 +1,19 @@
 import { cn } from "@/lib/utils";
 import {
-  Bolt,
-  Cloud,
-  Currency,
-  Grid,
-  Heart,
-  HelpCircle,
-  RouteOffIcon,
+  Code,
+  CreditCard,
+  Globe,
+  Layout,
+  Mail,
+  ShieldCheck,
   Smile,
   Terminal,
+  Users,
 } from "lucide-react";
-import { GridDotBackgroundWrapper } from "./grid-dot-background";
 
 export default function Features() {
-  const features = [
-    {
-      title: "Built for developers",
-      description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <Terminal />,
-    },
-    {
-      title: "Ease of use",
-      description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <Smile />,
-    },
-    {
-      title: "Pricing like no other",
-      description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <Currency />,
-    },
-    {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <Cloud />,
-    },
-    {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <RouteOffIcon />,
-    },
-    {
-      title: "24/7 Customer Support",
-      description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
-      icon: <HelpCircle />,
-    },
-    {
-      title: "Money back guarantee",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
-      icon: <Bolt />,
-    },
-    {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
-      icon: <Heart />,
-    },
-  ];
   return (
-    <section className='dark:none py-14 backdrop-blur-xl backdrop:filter dark:bg-cover dark:bg-left-top dark:bg-no-repeat'>
+    <section className='dark:none bg-gradient-transparent py-14 backdrop-blur-xl backdrop:filter dark:bg-cover dark:bg-left-top dark:bg-no-repeat'>
       <div className='mx-auto mb-7 max-w-7xl px-4 text-center sm:px-6 lg:px-8'>
         <h1 className='text-3xl font-bold tracking-tight sm:text-4xl'>
           Key Features
@@ -72,6 +24,7 @@ export default function Features() {
         </p>
       </div>
       <div className='container relative z-10 mx-auto grid max-w-7xl grid-cols-2 py-10 md:grid-cols-3 lg:grid-cols-4'>
+        {/* replace tools.map with features.map and get a different look */}
         {tools.map((feature, index) => (
           <Feature key={feature.title} {...feature} index={index} />
         ))}
@@ -94,8 +47,8 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r lg:first:rounded-tl-lg lg:last:rounded-br-lg lg:[&:nth-child(4n)]:border-r-0 lg:[&:nth-child(4)]:rounded-tr-lg lg:[&:nth-child(5)]:rounded-bl-lg py-10 relative group/feature backdrop-blur-lg bg-white/5 hover:shadow-lg",
-        (index === 0 || index === 4) && "dark:border-slate-800",
+        "flex flex-col lg:border-r lg:first:rounded-tl-lg lg:last:rounded-br-lg lg:[&:nth-child(4n)]:border-r-0 lg:[&:nth-child(4)]:rounded-tr-lg lg:[&:nth-child(5)]:rounded-bl-lg py-10 relative group/feature backdrop-blur-lg hover:shadow-lg",
+        (index === 0 || index === 4) && "",
         index < 4 && "lg:border-b",
       )}
     >
@@ -109,7 +62,7 @@ const Feature = ({
         {icon}
       </div>
       <div className='relative z-10 mb-2 px-10 text-lg font-bold'>
-        <div className='absolute inset-y-0 left-0 h-6 w-1 origin-center rounded-br-full rounded-tr-full bg-emerald-300 transition-all duration-200 group-hover/feature:h-8 group-hover/feature:bg-blue-500 dark:bg-emerald-700' />
+        <div className='absolute inset-y-0 left-0 h-6 w-1 origin-center rounded-br-full rounded-tr-full bg-emerald-300 transition-all duration-200 group-hover/feature:h-8 group-hover/feature:bg-emerald-500 dark:bg-emerald-700' />
         <span className='inline-block transition duration-200 group-hover/feature:translate-x-2'>
           {title}
         </span>
@@ -120,6 +73,57 @@ const Feature = ({
     </div>
   );
 };
+
+const features = [
+  {
+    title: "Built for Developers",
+    description:
+      "Designed for engineers and developers to quickly bootstrap scalable SaaS applications with modern technologies.",
+    icon: <Terminal />,
+  },
+  {
+    title: "Modern Tech Stack",
+    description:
+      "Includes Next.js, Tailwind CSS, Prisma, PostgreSQL, and more, so you can build with the latest and most powerful tools.",
+    icon: <Code />,
+  },
+  {
+    title: "Ready-to-Use Components",
+    description:
+      "Access a growing library of pre-built UI components and templates, helping you save time and focus on building core features.",
+    icon: <Layout />,
+  },
+  {
+    title: "Authentication & Security",
+    description:
+      "Implement authentication with NextAuth, social logins, and advanced security features out of the box.",
+    icon: <ShieldCheck />,
+  },
+  {
+    title: "Multi-language Support",
+    description:
+      "Easily add internationalization with next-i18n, ensuring your app is accessible to a global audience.",
+    icon: <Globe />,
+  },
+  {
+    title: "Seamless Billing Integration",
+    description:
+      "Set up billing with Stripe, LemonSqueezy, or Paddle in minutes, with built-in support for subscriptions and payments.",
+    icon: <CreditCard />,
+  },
+  {
+    title: "Email & Notifications",
+    description:
+      "Pre-configured transactional email support using SMTP or email APIs, integrated with popular providers like Mailchimp.",
+    icon: <Mail />,
+  },
+  {
+    title: "Active Community & Support",
+    description:
+      "Join a vibrant community of developers with access to documentation, tutorials, and support to help you succeed.",
+    icon: <Users />,
+  },
+];
 
 const tools = [
   {

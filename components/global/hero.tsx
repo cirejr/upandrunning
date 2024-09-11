@@ -1,9 +1,11 @@
 import React from "react";
 import { Button } from "../ui/button";
+import { Grid } from "./grid-pattern";
 
 export default function Hero() {
   return (
-    <section className='w-full py-12 md:py-24 lg:py-24 xl:py-32'>
+    <section className='relative h-[35rem] w-full py-12 md:py-24 lg:py-24 xl:py-32'>
+      <Grid size={40} />
       <div className='container px-4 md:px-6'>
         <div className='flex flex-col items-center space-y-4 text-center'>
           <div className='space-y-2'>
@@ -11,13 +13,12 @@ export default function Hero() {
               Launch Your Project in{" "}
               <span className='relative'>
                 <span className='bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent'>
-                  Minutes
+                  Minutes{" "}
                 </span>
-                <span className='absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-foreground'></span>
               </span>
-              , Not Days
+              Not Days
             </h1>
-            <p className='mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400'>
+            <p className='mx-auto max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl'>
               QuickStart Boilerplate: The ultimate tool for developers and
               companies to set up projects lightning fast. Stop wasting time on
               configuration, start building.

@@ -19,19 +19,19 @@ export function GridDotBackgroundWrapper({
     if (isDot) return "dark:bg-dot-white/[0.2] bg-dot-black/[0.2]";
     if (isGridSmall)
       return "dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2]";
-    return "dark:bg-grid-white/[0.2] bg-grid-black/[0.2]"; // Default to grid
+    return "dark:bg-grid-white/[0.1] bg-grid-black/[0.2]"; // Default to grid
   };
 
   return (
     <div
       className={cn(
-        `h-[50rem] w-full dark:bg-background bg-white relative flex items-center justify-center ${getBackgroundClass()}`,
+        `h-[50rem] w-full bg-white relative flex items-center justify-center ${getBackgroundClass()}`,
         className,
       )}
     >
       {/* Radial gradient for the container to give a faded look */}
       {isFaded && (
-        <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
+        <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_2%,black)] dark:bg-background'></div>
       )}
       {children}
     </div>

@@ -43,6 +43,7 @@ const config = {
         "pink-blue-gradient": "url('/assets/images/pink-blue-gradient.jpg')",
         "light-blue-point": "url('/assets/images/light-blue-point.jpg')",
         "soft-blue-gradient": "url('/assets/images/soft-blue-gradient.jpg')",
+        spreadsheet: "url('/assets/images/spreadsheets-background.png')",
       },
       colors: {
         border: "hsl(var(--border))",

@@ -6,9 +6,9 @@ import { Button } from "../ui/button";
 export default function GridSpotlightHero() {
   return (
     <section id='features'>
-      <GridDotBackgroundWrapper isFaded isGridSmall className='h-[35rem]'>
+      <GridDotBackgroundWrapper isFaded className='h-[35rem]'>
         <Spotlight
-          className='-top-40 left-0 md:left-60 md:-top-20'
+          className='-top-40 left-0 md:-top-20 md:left-60'
           fill='white'
         />
         <div className='flex flex-col items-center space-y-4 text-center'>
@@ -19,11 +19,11 @@ export default function GridSpotlightHero() {
                 <span className='bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent'>
                   Minutes
                 </span>
-                <span className='absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-foreground'></span>
+                <span className='absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-primary to-primary-foreground'></span>
               </span>
               , Not Days
             </h1>
-            <p className='mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400'>
+            <p className='mx-auto max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl'>
               QuickStart Boilerplate: The ultimate tool for developers and
               companies to set up projects lightning fast. Stop wasting time on
               configuration, start building.

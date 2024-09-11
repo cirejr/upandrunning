@@ -13,13 +13,13 @@ export default function PlusCornerSection({
     <section className={cn("container relative", className)}>
       {/* top left + sign*/}
       <div className='absolute left-0 top-0 z-[2] -translate-x-1/2 -translate-y-1/2'>
-        <div className='absolute left-1/2 top-1/2 h-5 w-[1px] -translate-x-1/2 -translate-y-1/2 bg-white'></div>
-        <div className='absolute left-1/2 top-1/2 h-5 w-[1px] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-white'></div>
+        <div className='absolute left-1/2 top-1/2 h-5 w-[0.5px] -translate-x-1/2 -translate-y-1/2 bg-foreground'></div>
+        <div className='absolute left-1/2 top-1/2 h-5 w-[0.5px] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-foreground'></div>
       </div>
       {/* bottom right + sign*/}
       <div className='absolute bottom-0 right-0 z-[2] -translate-x-1/2 -translate-y-1/2'>
-        <div className='absolute left-1/2 top-1/2 h-5 w-[1px] -translate-x-1/2 -translate-y-1/2 bg-white'></div>
-        <div className='absolute left-1/2 top-1/2 h-5 w-[1px] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-white'></div>
+        <div className='absolute left-1/2 top-1/2 h-5 w-[0.5px] -translate-x-1/2 -translate-y-1/2 bg-foreground'></div>
+        <div className='absolute left-1/2 top-1/2 h-5 w-[0.5px] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-foreground'></div>
       </div>
       {children}
     </section>
