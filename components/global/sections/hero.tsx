@@ -6,7 +6,7 @@ import CodeBox from "../code-box";
 
 export default function Hero() {
   return (
-    <section className='relative flex h-[30rem] w-full items-center justify-center overflow-x-hidden py-12 md:h-[50rem] md:py-24 lg:py-24 xl:py-32'>
+    <section className='relative flex h-[40rem] w-full items-center justify-center overflow-x-hidden py-12 md:h-[50rem] md:py-24 lg:py-24 xl:py-32'>
       <Grid size={40} />
       <div className='container px-4 md:px-6'>
         <div className='flex flex-col items-center space-y-14 text-center'>
@@ -22,14 +22,14 @@ export default function Hero() {
               Not <span className='text-red-500 line-through'>Days</span>
             </h1>
             <p className='mx-auto max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl'>
-              QuickStart Boilerplate: The ultimate tool for developers and
-              companies to set up projects lightning fast. Stop wasting time on
-              configuration, start building.
+              UPnRunning: The ultimate tool for developers and companies to set
+              up projects lightning fast. Stop wasting time on configuration,
+              start building.
             </p>
           </div>
           <div className='mt-10 space-x-4'>
-            <Button>Get Started →</Button>
-            <Button variant='outline' asChild>
+            <Button>Read Docs</Button>
+            <Button variant='outline' className='dark:glass' asChild>
               <Link href='https://github.com/cirejr/upandrunning'>
                 Star us on Github ⭐
               </Link>

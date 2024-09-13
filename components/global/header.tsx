@@ -4,7 +4,6 @@ import { ModeToggle } from "./mode-toggle";
 import { links } from "@/config/site";
 import { Button } from "../ui/button";
 import MobileSideMenu from "./mobile-side-menu";
-import { Github } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 
 export default function Header({

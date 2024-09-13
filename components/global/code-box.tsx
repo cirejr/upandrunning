@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export default function CodeBox() {
   const [copied, setCopied] = useState(false);
-  const command = "git clone https://github.com/cirejr/upnrunning";
+  const command = "git clone https://github.com/cirejr/upandrunning.git";
 
   const copyToClipboard = async () => {
     try {
@@ -22,17 +22,29 @@ export default function CodeBox() {
   };
 
   return (
-    <PlusCornerCard className='relative mt-10 flex h-fit max-w-xl items-center justify-center'>
-      <div className='flex items-center justify-between p-4'>
-        <pre className={cn("font-geist-mono text-white", GeistMono.className)}>
-          <span className='text-pink-500'>git</span> clone
-          https://github.com/cirejr/upandrunning
+    <PlusCornerCard className='relative mt-10 flex h-fit items-center justify-center md:max-w-xl'>
+      <div className='flex flex-col items-center justify-center md:flex-row md:gap-3'>
+        <pre
+          className={cn(
+            "font-geist-mono flex flex-col md:flex-row gap-2 text-sm md:text-base",
+            GeistMono.className,
+          )}
+        >
+          <span>
+            git <span className='text-pink-500'>clone</span>
+          </span>{" "}
+          <span>
+            https:
+            <span className='text-muted-foreground'>
+              //github.com/cirejr/upandrunning.git
+            </span>
+          </span>
         </pre>
         <Button
           variant='ghost'
           size='icon'
           onClick={copyToClipboard}
-          className='text-zinc-400 hover:bg-background hover:text-white focus:outline-none'
+          className='text-xs text-zinc-400 hover:bg-background hover:text-white focus:outline-none md:text-base'
         >
           {copied ? (
             <Check className='h-4 w-4' />

@@ -7,76 +7,65 @@ export default function PricingSection() {
     {
       title: "Free",
       price: "$0",
-      description: "Basic Boilerplate",
+      description: "SaaS Starterkit",
       features: [
         "Core SaaS features (authentication, database integration, etc.)",
         "Basic documentation",
-        "Community support",
         "GitHub access",
         "Free components library",
         "Basic UI blocks (Tailwind CSS, Next.js)",
         "MIT License for personal or commercial use",
-        "Access to community-shared templates",
         "Limited email support",
       ],
       cta: "Get started",
     },
     {
-      title: "Pro",
-      price: "$19",
-      description: "per month",
+      title: "Templates",
+      price: "From $49",
+      description: "Get a template to kickstart your project",
       features: [
         "All Free tier features",
-        "Access to growing library of custom templates",
-        "Monthly updates with new templates",
-        "Priority support",
-        "Extended documentation and guides",
+        "Priority support for template-related issues",
+        "Extended documentation and guides for template usage",
+        "Design-ready layouts with Tailwind CSS and Next.js",
+        "Basic SEO setup for template pages",
+        "Quick-start project setups for faster development",
       ],
-      cta: "Subscribe now",
+      cta: "Browse templates",
     },
     {
-      title: "Enterprise",
-      price: "$99",
-      description: "per month",
+      title: "Pages/Dashboard",
+      price: "$499",
+      description:
+        "For those who want to focus on getting to business rather than UI design and front-end",
       features: [
-        "All Pro tier features",
-        "Customization consultation",
-        "Priority feature requests",
-        "Dedicated support channel",
-        "Custom integrations",
-        "One request / page at a time",
-        "Unlimited revisions",
+        "One time payment",
+        "Private communication channel with 24-hour support response time",
+        "Custom dashboard and landing page design",
+        "One request / page at a time with unlimited revisions",
         "CMS integration (e.g., Contentful, Strapi)",
-        "Search Engine Optimization (SEO) setup",
-        "7-10 days turnaround time",
-        "Pause or cancel anytime",
-        "24-hour support response time",
-        "Private communication channel",
+        "Search Engine Optimization (SEO) setup for each page",
+        "Custom integration consultation (e.g., APIs, third-party services)",
+        "7-10 days turnaround time per request",
       ],
-      cta: "Contact sales",
+      cta: "Get it now",
       highlighted: true,
     },
     {
-      title: "Lifetime Access",
-      price: "$499",
-      description: "One-time payment",
+      title: "Full Web App",
+      price: "From $1000",
+      description: "Custom web app development for businesses",
       features: [
-        "Access to all current and future templates",
-        "Lifetime updates",
-        "Premium support",
-        "Early access to new features",
-        "Exclusive developer community access",
-        "Multi-page landing website development",
-        "Web apps and SaaS development",
-        "AI apps integration support",
-        "Unlimited revisions",
-        "Negotiable delivery time",
+        "Custom full-stack web app development",
+        "Tailored to your specific business needs",
+        "Integration with third-party APIs and services",
+        "AI app integration (e.g., OpenAI, GPT-4)",
+        "Unlimited revisions during the development phase",
         "Design + development consultations",
-        "Private communication channel",
-        "24-hour support response time",
+        "Delivery timeline based on project scope",
+        "Ongoing support available with extended contract",
       ],
-      cta: "Buy now",
-      ctaAlt: "Learn more",
+      cta: "Contact us",
     },
   ];
 
@@ -139,16 +128,13 @@ export default function PricingSection() {
                   <Button
                     variant={plan.highlighted ? "secondary" : "outline"}
                     className={`mt-6 rounded-lg border-primary px-4 py-2 font-semibold transition-colors ${
-                      plan.highlighted ? "" : "hover:bg-primary"
+                      plan.highlighted
+                        ? ""
+                        : "hover:bg-primary hover:text-background"
                     }`}
                   >
                     {plan.cta}
                   </Button>
-                  {plan.ctaAlt && (
-                    <Button className='mt-2 rounded-lg bg-transparent px-4 py-2 font-semibold text-gray-400 transition-colors hover:text-white'>
-                      or {plan.ctaAlt}
-                    </Button>
-                  )}
                 </div>
               </div>
             ))}

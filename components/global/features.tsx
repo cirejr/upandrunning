@@ -73,9 +73,9 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r lg:first:rounded-tl-lg lg:last:rounded-br-lg lg:[&:nth-child(4n)]:border-r-0 lg:[&:nth-child(4)]:rounded-tr-lg lg:[&:nth-child(5)]:rounded-bl-lg py-10 relative group/feature backdrop-blur-lg hover:shadow-lg",
+        "flex flex-col border-r lg:first:rounded-tl-lg lg:last:rounded-br-lg lg:[&:nth-child(4n)]:border-r-0 lg:[&:nth-child(4)]:rounded-tr-lg lg:[&:nth-child(5)]:rounded-bl-lg py-10 relative group/feature backdrop-blur-lg hover:shadow-lg",
         (index === 0 || index === 4) && "",
-        index < 4 && "lg:border-b",
+        index < 4 && "border-b",
       )}
     >
       {index < 4 && (

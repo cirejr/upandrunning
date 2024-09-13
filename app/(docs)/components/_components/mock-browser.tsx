@@ -12,9 +12,9 @@ export default function MockBrowser({ className }: { className?: ClassValue }) {
     >
       <div className='relative flex h-[30px] w-full items-center justify-center border-b'>
         <div className='absolute left-0 top-0 ml-2 flex h-full items-center justify-start gap-1'>
-          <div className='h-[8px] w-[8px] rounded-full bg-green-500'></div>
           <div className='h-[8px] w-[8px] rounded-full bg-red-500'></div>
-          <div className='h-[8px] w-[8px] rounded-full bg-primary'></div>
+          <div className='h-[8px] w-[8px] rounded-full bg-yellow-500'></div>
+          <div className='h-[8px] w-[8px] rounded-full bg-green-500'></div>
         </div>
         <div className='mb-[1px] flex items-center justify-start text-xs leading-[1]'>
           <svg fill='none' height='16' width='16' viewBox='0 0 16 16'>
@@ -52,36 +52,6 @@ export default function MockBrowser({ className }: { className?: ClassValue }) {
             <div className='h-[4px] w-[20px] rounded-full bg-secondary'></div>
           </div>
           <div className='relative flex h-[100px] w-full max-w-[200px] flex-col items-start justify-start gap-1 rounded-md border px-2 py-2.5'>
-            <div className='absolute right-1.5 top-1 flex h-3.5 w-3.5 items-center justify-center rounded-sm border'>
-              <div
-                className='absolute -top-6 h-fit'
-                style={{ opacity: 1, top: "-1.6rem" }}
-              >
-                <div className='h-fit rounded-sm border bg-[var(--bg)] px-1 py-0.5 text-[0.6rem] leading-[1]'>
-                  copied
-                </div>
-                <span
-                  className='absolute left-1/2 top-[calc(100%-1px)] h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rotate-[225deg] rounded-tl border bg-[var(--bg)]'
-                  style={{
-                    clipPath: "polygon(0px 0px, 100% 0px, 50% 50%, 0% 100%)",
-                  }}
-                ></span>
-              </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='12'
-                height='12'
-                viewBox='0 0 24 24'
-                fill='none'
-                className='stroke-neutral-800 dark:stroke-neutral-400'
-                stroke='currentColor'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              >
-                <path d='M20 6 9 17l-5-5'></path>
-              </svg>
-            </div>
             <div className='flex items-start justify-start gap-1'>
               {/* skeletons on in center */}
               <div className='h-[4px] w-[50px] rounded-full bg-fuchsia-400'></div>

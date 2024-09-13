@@ -1,16 +1,11 @@
 "use client";
 
-import GlassyCard from "@/components/global/glassy-card";
-import MockBrowser, {
-  BlankMockBrowser,
-  BrowserComponent,
-  StackedMockBrowser,
-} from "./_components/mock-browser";
-import GradientCard from "@/components/global/gradient-card";
+import MockBrowser from "./_components/mock-browser";
 import { CurvedLines } from "@/components/icons/curved-lines";
-import GradientCardDemo from "./_components/gradient-card-demo";
 import { Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+import { GeistMono } from "geist/font/mono";
 
 export default function Grid2Section({
   className,
@@ -55,22 +50,29 @@ export function Grid2SectionDemo() {
               One Simple Command
             </span>
           </div>
-          <p className='mt-2 text-sm text-muted-foreground'>
+          <p
+            className={`mt-2 text-xs text-muted-foreground ${GeistMono.className}`}
+          >
             ~ git clone https://github.com/cirejr/upnrunning.git
           </p>
         </div>
 
         {/* being hidden on mobile */}
-        <div className='glass w-xs absolute left-6 right-6 top-[6.5rem] z-[1] mt-6 hidden flex-col rounded-lg p-4 text-sm backdrop-blur-xl backdrop-filter sm:flex xl:min-w-[560px]'>
+        <div
+          className={cn(
+            "font-mono glass w-xs absolute left-6 right-6 top-[6.5rem] z-[1] mt-6 hidden flex-col rounded-lg p-4 text-sm backdrop-blur-xl backdrop-filter sm:flex xl:min-w-[560px]",
+            GeistMono.className,
+          )}
+        >
           <div className='mb-2 flex items-center space-x-2'>
             <div className='h-3 w-3 rounded-full bg-red-500'></div>
             <div className='h-3 w-3 rounded-full bg-yellow-500'></div>
             <div className='h-3 w-3 rounded-full bg-green-500'></div>
           </div>
-          <p className='text-muted-foreground'>
+          <p className='font-mono text-muted-foreground'>
             ~ git clone https://github.com/cirejr/upnrunning.git
           </p>
-          <div className='px-4'>
+          <div className='px-4 font-mono'>
             <p className=' '>cloning into : `your-repo`...</p>
             <p className=' '>remote: Counting objects: 10, done.</p>
             <p className=' '>remote: Compressing objects: 100% (8/8), done.</p>
@@ -84,7 +86,7 @@ export function Grid2SectionDemo() {
       </div>
       <div className='sm:min-w-1/2 flex w-full flex-col gap-10 p-6 sm:w-1/2'>
         {/* being hidden on mobile */}
-        <div className='glass w-sm hidden translate-y-6 rounded-r-lg p-4 sm:block lg:absolute lg:top-[4.3rem] lg:translate-y-0 xl:right-[22rem] xl:translate-x-1/4'>
+        <div className='glass w-sm hidden translate-y-6 rounded-r-lg p-4 sm:block lg:absolute lg:top-[4.3rem] lg:translate-y-0 xl:right-[18rem] xl:translate-x-1/4'>
           <div className='absolute bottom-0 left-0 top-0 w-[1px] rounded-full border-l border-green-400 shadow-[0_0_5px_1px_rgba(34,197,94,0.6)]'></div>
           <div className='flex items-center space-x-2'>
             <Terminal />
@@ -92,19 +94,23 @@ export function Grid2SectionDemo() {
               One Simple Command
             </span>
           </div>
-          <p className='mt-2 text-sm text-muted-foreground'>
+          <p
+            className={`mt-2 text-sm text-muted-foreground font-mono ${GeistMono.className}`}
+          >
             ~ git clone https://github.com/cirejr/upnrunning.git
           </p>
         </div>
 
         {/* being hidden on desktop */}
-        <div className='glass rounded-lg p-4 text-sm sm:hidden'>
+        <div
+          className={`glass rounded-lg p-4 text-sm sm:hidden ${GeistMono.className}`}
+        >
           <div className='mb-2 flex items-center space-x-2'>
             <div className='h-3 w-3 rounded-full bg-red-500'></div>
             <div className='h-3 w-3 rounded-full bg-yellow-500'></div>
             <div className='h-3 w-3 rounded-full bg-green-500'></div>
           </div>
-          <p className='text-muted-foreground'>
+          <p className='text-xs text-muted-foreground'>
             ~ git clone https://github.com/cirejr/upnrunning.git
           </p>
           <div className='px-4'>
