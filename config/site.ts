@@ -4,5 +4,4 @@ export const links = [
   { title: "Features", href: "#features" },
   { title: "Benefits", href: "#benefits" },
   { title: "Pricing", href: "#pricing" },
-  { title: "FAQ", href: "#faq" },
 ];
