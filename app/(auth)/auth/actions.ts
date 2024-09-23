@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { Console } from "console";
 
 export async function signIn(formData: FormData) {
   const supabase = createClient();
@@ -33,20 +34,10 @@ export async function signUp(formData: FormData) {
   const password = formData.get("password") as string;
   const name = formData.get("name") as string;
 
-  // Validate form inputs (email and password should already be validated on the front-end)
-  if (!email || !password || !name) {
-    return redirect("/error"); // Redirect to error if any field is missing
-  }
-
   // Sign up user with Supabase
   const { error, data } = await supabase.auth.signUp({
     email,
     password,
-    options: {
-      data: {
-        name, // Store the name in the user metadata
-      },
-    },
   });
 
   // Handle any sign-up error

@@ -24,6 +24,7 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 export function LoginForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [loadingButton, setLoadingButton] = React.useState<string | null>(null);
   const router = useRouter();
   const {
     register,
@@ -35,6 +36,7 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
 
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
+    setLoadingButton("email");
 
     const formData = new FormData();
     formData.append("email", data.email);
@@ -55,8 +57,21 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
       toast.error("une erreur est survenue veuillez ressayer");
     } finally {
       setIsLoading(false);
+      setLoadingButton(null);
     }
   });
+
+  const handleOAuthLogin = async (provider: string) => {
+    setIsLoading(true);
+    setLoadingButton(provider);
+
+    // Simulate OAuth login process
+    setTimeout(() => {
+      setIsLoading(false);
+      setLoadingButton(null);
+      toast.success(`Logged in with ${provider}`);
+    }, 2000);
+  };
 
   return (
     <div className={cn("grid gap-6 dark w-full", className)} {...props}>
@@ -100,7 +115,9 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
             )}
           </div>
           <Button disabled={isLoading} size='lg'>
-            {isLoading && <FaSpinner className='mr-2 h-4 w-4 animate-spin' />}
+            {loadingButton === "email" && (
+              <FaSpinner className='mr-2 h-4 w-4 animate-spin' />
+            )}
             <MailIcon className='mr-2 h-4 w-4' />
             Log in with email
           </Button>
@@ -119,8 +136,9 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
         type='button'
         disabled={isLoading}
         className='glass'
+        onClick={() => handleOAuthLogin("GitHub")}
       >
-        {isLoading ? (
+        {loadingButton === "GitHub" ? (
           <FaSpinner className='mr-2 h-4 w-4 animate-spin' />
         ) : (
           <GithubIcon className='mr-2 h-4 w-4' />
@@ -132,8 +150,9 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
         type='button'
         disabled={isLoading}
         className='glass'
+        onClick={() => handleOAuthLogin("Google")}
       >
-        {isLoading ? (
+        {loadingButton === "Google" ? (
           <FaSpinner className='mr-2 h-4 w-4 animate-spin' />
         ) : (
           <FaGoogle className='mr-2 h-4 w-4' />

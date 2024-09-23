@@ -42,10 +42,10 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
     formData.append("password", data.password);
 
     try {
-      const res = await signUp(formData); // Replace signIn with signUp
+      const res = await signUp(formData);
       if (res.success) {
         toast.success("Account created successfully!");
-        router.push("/admin"); // Redirect to login after registration
+        router.push("/admin"); 
       } else if (res.error) {
         toast.error(res.error || "An error occurred, please try again");
       }
@@ -71,7 +71,6 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
               placeholder='Your Name'
               type='text'
               autoCapitalize='none'
-              autoComplete='name'
               autoCorrect='off'
               disabled={isLoading}
               className='glass'
@@ -109,7 +108,6 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
               placeholder='• • • • • • • • • • • •'
               type='password'
               autoCapitalize='none'
-              autoComplete='new-password'
               autoCorrect='off'
               disabled={isLoading}
               className='glass'
@@ -128,7 +126,6 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
               placeholder='• • • • • • • • • • • •'
               type='password'
               autoCapitalize='none'
-              autoComplete='new-password'
               autoCorrect='off'
               disabled={isLoading}
               className='glass'
