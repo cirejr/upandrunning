@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { Provider } from "@supabase/supabase-js";
 
 const supabase = createClient();
 
@@ -47,16 +48,16 @@ export async function signUpWithPassword(formData: FormData) {
   return { success: true, user: data.user };
 }
 
-export async function signInWithGithub() {
+export async function signInWithOAuth(provider: Provider) {
   const { data, error } = await supabase.auth.signInWithOAuth({
-  provider: 'github',
+  provider: provider,
   options: {
     redirectTo: 'http://localhost:3000/api/auth/callback',
   },
 })
 
 if (data.url) {
-  redirect(data.url) // use the redirect API for your server framework
+  redirect(data.url) 
 }
 
 }

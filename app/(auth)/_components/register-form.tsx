@@ -4,7 +4,7 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 
 import { signUpWithPassword } from "../auth/actions";
-import { registerSchema } from "./auth-schema";
+import { loginSchema, registerSchema } from "./auth-schema";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -14,8 +14,8 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { FaGoogle, FaSpinner } from "react-icons/fa6";
-import { GithubIcon, MailIcon } from "lucide-react";
+import { FaSpinner } from "react-icons/fa6";
+import { MailIcon } from "lucide-react";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
 
