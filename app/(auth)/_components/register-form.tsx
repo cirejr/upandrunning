@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 
-import { signIn, signUp } from "../auth/actions";
+import { signUpWithPassword } from "../auth/actions";
 import { loginSchema, registerSchema } from "./auth-schema";
 
 import { cn } from "@/lib/utils";
@@ -14,8 +14,8 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { FaGoogle, FaSpinner } from "react-icons/fa6";
-import { GithubIcon, MailIcon } from "lucide-react";
+import { FaSpinner } from "react-icons/fa6";
+import { MailIcon } from "lucide-react";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
 
@@ -42,7 +42,7 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
     formData.append("password", data.password);
 
     try {
-      const res = await signUp(formData);
+      const res = await signUpWithPassword(formData);
       if (res.success) {
         toast.success("Account created successfully!");
         router.push("/admin"); 

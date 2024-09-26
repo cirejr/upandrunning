@@ -2,22 +2,26 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-import { signIn } from "../auth/actions";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Provider } from "@supabase/supabase-js";
+
+import { signInWithOAuth, signInWithPassword } from "../auth/actions";
+import { GithubButton, GoogleButton } from "./social-login-buttons";
 import { loginSchema } from "./auth-schema";
-
 import { cn } from "@/lib/utils";
+
+import { Separator } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { FaGoogle, FaSpinner } from "react-icons/fa6";
-import { GithubIcon, MailIcon } from "lucide-react";
-import { Separator } from "@radix-ui/react-dropdown-menu";
-import Link from "next/link";
+
+import { FaSpinner } from "react-icons/fa6";
+import { MailIcon } from "lucide-react";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -43,7 +47,7 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     formData.append("password", data.password);
 
     try {
-      const res = await signIn(formData);
+      const res = await signInWithPassword(formData);
       if (res.success) {
         toast.success("connecté(e)");
         router.push("/admin");
@@ -61,16 +65,17 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     }
   });
 
-  const handleOAuthLogin = async (provider: string) => {
+  const handleOAuthLogin = async (provider: Provider) => {
     setIsLoading(true);
     setLoadingButton(provider);
-
-    // Simulate OAuth login process
-    setTimeout(() => {
+    try {
+      await signInWithOAuth(provider);
+    } catch (error) {
+      toast.error("Une erreur est survenue, veuillez réessayer");
+    } finally {
       setIsLoading(false);
       setLoadingButton(null);
-      toast.success(`Logged in with ${provider}`);
-    }, 2000);
+    }
   };
 
   return (
@@ -78,6 +83,26 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
       <h1 className='text-3xl font-semibold'>Welcome back,</h1>
       <p className='text-muted-foreground'>Log in into your account</p>
       <Separator className='h-px w-full bg-border' />
+
+      <GoogleButton
+        isLoading={isLoading}
+        isLoadingButton={loadingButton === "google"}
+        onClick={() => handleOAuthLogin("google")}
+      />
+
+      <GithubButton
+        isLoading={isLoading}
+        isLoadingButton={loadingButton === "github"}
+        onClick={() => handleOAuthLogin("github")}
+      />
+
+      <div className='flex items-center justify-between gap-3 w-full '>
+        <Separator className='h-px w-1/4 bg-border' />
+        <p className='px-2 text-muted-foreground text-xs uppercase w-fit'>
+          Or continue with
+        </p>
+        <Separator className='h-px w-1/4 bg-border' />
+      </div>
       <form onSubmit={onSubmit}>
         <div className='grid gap-2 space-y-4 text-muted-foreground'>
           <div className='grid gap-3'>
@@ -87,7 +112,6 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
               placeholder='name@example.com'
               type='email'
               autoCapitalize='none'
-              autoComplete='email'
               autoCorrect='off'
               disabled={isLoading}
               className='glass'
@@ -104,7 +128,6 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
               placeholder='• • • • • • • • • • • •'
               type='password'
               autoCapitalize='none'
-              autoComplete='current-password'
               autoCorrect='off'
               disabled={isLoading}
               className='glass'
@@ -123,42 +146,6 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
           </Button>
         </div>
       </form>
-      <div className='relative'>
-        <div className='absolute inset-0 flex items-center'>
-          <span className='w-full border-t' />
-        </div>
-        <div className='relative flex justify-center text-xs uppercase'>
-          <span className='px-2 text-muted-foreground'>Or continue with</span>
-        </div>
-      </div>
-      <Button
-        variant='outline'
-        type='button'
-        disabled={isLoading}
-        className='glass'
-        onClick={() => handleOAuthLogin("GitHub")}
-      >
-        {loadingButton === "GitHub" ? (
-          <FaSpinner className='mr-2 h-4 w-4 animate-spin' />
-        ) : (
-          <GithubIcon className='mr-2 h-4 w-4' />
-        )}{" "}
-        GitHub
-      </Button>
-      <Button
-        variant='outline'
-        type='button'
-        disabled={isLoading}
-        className='glass'
-        onClick={() => handleOAuthLogin("Google")}
-      >
-        {loadingButton === "Google" ? (
-          <FaSpinner className='mr-2 h-4 w-4 animate-spin' />
-        ) : (
-          <FaGoogle className='mr-2 h-4 w-4' />
-        )}{" "}
-        Google
-      </Button>
       <div className='text-sm text-muted-foreground'>
         <h4>Don't have an account?</h4>
         <Link href='/auth/register'>
