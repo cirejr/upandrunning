@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 
-import { signIn } from "../auth/actions";
+import { signInWithPassword } from "../auth/actions";
 import { loginSchema } from "./auth-schema";
 
 import { cn } from "@/lib/utils";
@@ -43,7 +43,7 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     formData.append("password", data.password);
 
     try {
-      const res = await signIn(formData);
+      const res = await signInWithPassword(formData);
       if (res.success) {
         toast.success("connecté(e)");
         router.push("/admin");
@@ -168,3 +168,6 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     </div>
   );
 }
+
+
+

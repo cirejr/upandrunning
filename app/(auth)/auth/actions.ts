@@ -4,10 +4,10 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { Console } from "console";
 
-export async function signIn(formData: FormData) {
-  const supabase = createClient();
+const supabase = createClient();
+
+export async function signInWithPassword(formData: FormData) {
 
   const dataToSend = {
     email: formData.get("email") as string,
@@ -26,8 +26,7 @@ export async function signIn(formData: FormData) {
   return { success: true, user: authData.user };
 }
 
-export async function signUp(formData: FormData) {
-  const supabase = createClient(); // Make sure to initialize Supabase properly with your keys
+export async function signUpWithPassword(formData: FormData) {
 
   // Extracting form data
   const email = formData.get("email") as string;
@@ -47,3 +46,18 @@ export async function signUp(formData: FormData) {
 
   return { success: true, user: data.user };
 }
+
+export async function signInWithGithub() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+  provider: 'github',
+  options: {
+    redirectTo: 'http://localhost:3000/api/auth/callback',
+  },
+})
+
+if (data.url) {
+  redirect(data.url) // use the redirect API for your server framework
+}
+
+}
+

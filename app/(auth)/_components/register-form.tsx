@@ -3,8 +3,8 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 
-import { signIn, signUp } from "../auth/actions";
-import { loginSchema, registerSchema } from "./auth-schema";
+import { signUpWithPassword } from "../auth/actions";
+import { registerSchema } from "./auth-schema";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -42,7 +42,7 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
     formData.append("password", data.password);
 
     try {
-      const res = await signUp(formData);
+      const res = await signUpWithPassword(formData);
       if (res.success) {
         toast.success("Account created successfully!");
         router.push("/admin"); 
