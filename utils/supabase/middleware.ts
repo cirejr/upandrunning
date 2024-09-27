@@ -34,7 +34,7 @@ export async function updateSession(request: NextRequest) {
   // issues with users being randomly logged out.
 
   // Add the pages you want to protect here just like it's done with '/admin'
-  const isAdminPage = request.nextUrl.pathname.startsWith("/admin");
+  const isAdminPage = request.nextUrl.pathname.startsWith("/dashboard");
 
   if (isAdminPage) {
     const {
