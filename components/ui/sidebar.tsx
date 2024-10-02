@@ -1,190 +1,204 @@
-"use client";
-import { cn } from "@/lib/utils";
-import Link, { LinkProps } from "next/link";
-import React, { useState, createContext, useContext } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { MenuIcon, X } from "lucide-react";
+"use client"
 
-interface Links {
-  label: string;
-  href: string;
-  icon: React.JSX.Element | React.ReactNode;
+import * as React from "react"
+import { PanelLeft } from "lucide-react"
+
+import { useIsMobile } from "@/hooks/use-mobile"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent } from "@/components/ui/sheet"
+
+export const SIDEBAR_STATE_COOKIE = "sidebar:state"
+
+type SidebarContext = {
+  state: "open" | "closed"
+  open: boolean
+  onOpenChange: (open: boolean) => void
 }
 
-interface SidebarContextProps {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  animate: boolean;
+const SidebarContext = React.createContext<SidebarContext>({
+  state: "open",
+  open: true,
+  onOpenChange: () => {},
+})
+
+function useSidebar() {
+  return React.useContext(SidebarContext)
 }
 
-const SidebarContext = createContext<SidebarContextProps | undefined>(
-  undefined,
-);
-
-export const useSidebar = () => {
-  const context = useContext(SidebarContext);
-  if (!context) {
-    throw new Error("useSidebar must be used within a SidebarProvider");
+const SidebarLayout = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div"> & {
+    defaultOpen?: boolean
   }
-  return context;
-};
+>(({ defaultOpen, className, ...props }, ref) => {
+  const [open, setOpen] = React.useState(defaultOpen ?? true)
 
-export const SidebarProvider = ({
-  children,
-  open: openProp,
-  setOpen: setOpenProp,
-  animate = true,
-}: {
-  children: React.ReactNode;
-  open?: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-  animate?: boolean;
-}) => {
-  const [openState, setOpenState] = useState(false);
+  const onOpenChange = React.useCallback((open: boolean) => {
+    setOpen(open)
+    document.cookie = `${SIDEBAR_STATE_COOKIE}=${open}; path=/; max-age=${
+      60 * 60 * 24 * 7
+    }`
+  }, [])
 
-  const open = openProp !== undefined ? openProp : openState;
-  const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState;
+  const state = open ? "open" : "closed"
 
   return (
-    <SidebarContext.Provider value={{ open, setOpen, animate: animate }}>
-      {children}
-    </SidebarContext.Provider>
-  );
-};
-
-export const Sidebar = ({
-  children,
-  open,
-  setOpen,
-  animate,
-}: {
-  children: React.ReactNode;
-  open?: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-  animate?: boolean;
-}) => {
-  return (
-    <SidebarProvider open={open} setOpen={setOpen} animate={animate}>
-      {children}
-    </SidebarProvider>
-  );
-};
-
-export const SidebarBody = (props: React.ComponentProps<typeof motion.div>) => {
-  return (
-    <>
-      <DesktopSidebar {...props} />
-      <MobileSidebar {...(props as React.ComponentProps<"div">)} />
-    </>
-  );
-};
-
-export const DesktopSidebar = ({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof motion.div>) => {
-  const { open, setOpen, animate } = useSidebar();
-  return (
-    <>
-      <motion.div
-        className={cn(
-          "h-full px-4 py-4 hidden md:flex md:flex-col bg-background w-[300px] flex-shrink-0",
-          className,
-        )}
-        animate={{
-          width: animate ? (open ? "300px" : "60px") : "300px",
-        }}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-        {...props}
-      >
-        {children}
-      </motion.div>
-    </>
-  );
-};
-
-export const MobileSidebar = ({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"div">) => {
-  const { open, setOpen } = useSidebar();
-  return (
-    <>
+    <SidebarContext.Provider value={{ state, open, onOpenChange }}>
       <div
+        ref={ref}
+        data-sidebar={state}
+        style={
+          {
+            "--sidebar-width": "16rem",
+          } as React.CSSProperties
+        }
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full",
+          "flex min-h-screen bg-accent/50 pl-0 transition-all duration-300 ease-in-out data-[sidebar=closed]:pl-0 sm:pl-[--sidebar-width]",
+          className
         )}
         {...props}
-      >
-        <div className='flex justify-end z-20 w-full'>
-          <MenuIcon
-            className='text-neutral-800 dark:text-neutral-200'
-            onClick={() => setOpen(!open)}
-          />
-        </div>
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ x: "-100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "-100%", opacity: 0 }}
-              transition={{
-                duration: 0.3,
-                ease: "easeInOut",
-              }}
-              className={cn(
-                "fixed h-full w-full inset-0 bg-white dark:bg-neutral-900 p-10 z-[100] flex flex-col justify-between",
-                className,
-              )}
-            >
-              <div
-                className='absolute right-10 top-10 z-50 text-neutral-800 dark:text-neutral-200'
-                onClick={() => setOpen(!open)}
-              >
-                <X />
-              </div>
-              {children}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </>
-  );
-};
+      />
+    </SidebarContext.Provider>
+  )
+})
+SidebarLayout.displayName = "SidebarLayout"
 
-export const SidebarLink = ({
-  link,
-  className,
-  ...props
-}: {
-  link: Links;
-  className?: string;
-  props?: LinkProps;
-}) => {
-  const { open, animate } = useSidebar();
+const SidebarTrigger = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<"button">
+>(({ className, ...props }, ref) => {
+  const { open, onOpenChange } = useSidebar()
+
   return (
-    <Link
-      href={link.href}
-      className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
-        className,
-      )}
+    <Button
+      ref={ref}
+      variant="ghost"
+      size="icon"
+      className={cn("h-8 w-8", className)}
+      onClick={() => onOpenChange(!open)}
       {...props}
     >
-      {link.icon}
+      <PanelLeft className="w-4 h-4" />
+      <span className="sr-only">Toggle Sidebar</span>
+    </Button>
+  )
+})
+SidebarTrigger.displayName = "SidebarTrigger"
 
-      <motion.span
-        animate={{
-          display: animate ? (open ? "inline-block" : "none") : "inline-block",
-          opacity: animate ? (open ? 1 : 0) : 1,
-        }}
-        className='text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0'
+const Sidebar = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
+  ({ className, children }, ref) => {
+    const isMobile = useIsMobile()
+    const { open, onOpenChange } = useSidebar()
+
+    const sidebar = (
+      <div
+        ref={ref}
+        className={cn("flex h-full flex-col border-r bg-background", className)}
       >
-        {link.label}
-      </motion.span>
-    </Link>
-  );
-};
+        {children}
+      </div>
+    )
+
+    if (isMobile) {
+      return (
+        <Sheet open={open} onOpenChange={onOpenChange}>
+          <SheetContent
+            className="w-[260px] p-0 md:w-[--sidebar-width] [&>button]:hidden"
+            side="left"
+          >
+            {sidebar}
+          </SheetContent>
+        </Sheet>
+      )
+    }
+
+    return (
+      <aside className="md:block left-0 [[data-sidebar=closed]_&]:left-[calc(var(--sidebar-width)*-1)] z-10 fixed inset-y-0 hidden w-[--sidebar-width] transition-all duration-300 ease-in-out">
+        {sidebar}
+      </aside>
+    )
+  }
+)
+Sidebar.displayName = "Sidebar"
+
+const SidebarHeader = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn("flex items-center border-b px-2.5 py-3", className)}
+      {...props}
+    />
+  )
+})
+SidebarHeader.displayName = "SidebarHeader"
+
+const SidebarFooter = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn("flex items-center border-t px-2.5 py-2", className)}
+      {...props}
+    />
+  )
+})
+SidebarFooter.displayName = "SidebarFooter"
+
+const SidebarContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn("flex flex-1 flex-col gap-5 overflow-auto py-4", className)}
+      {...props}
+    />
+  )
+})
+SidebarContent.displayName = "SidebarContent"
+
+const SidebarItem = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => {
+  return (
+    <div ref={ref} className={cn("grid gap-2 px-2.5", className)} {...props} />
+  )
+})
+SidebarItem.displayName = "SidebarItem"
+
+const SidebarLabel = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "px-1.5 text-xs font-medium text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+})
+SidebarLabel.displayName = "SidebarLabel"
+
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarLabel,
+  SidebarLayout,
+  SidebarTrigger,
+  useSidebar,
+}

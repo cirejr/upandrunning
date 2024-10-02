@@ -16,18 +16,18 @@ export default function Features() {
   return (
     <section
       id='features'
-      className='dark:none bg-gradient-transparent mb-10 border-b border-t py-14 backdrop-blur-xl backdrop:filter'
+      className='dark:none bg-gradient-transparent backdrop-blur-xl mb-10 py-14 border-t border-b backdrop:filter'
     >
       <Separator
         orientation='vertical'
-        className='absolute -top-[50px] left-[15px] z-20 hidden h-[45rem] w-[0.5px] md:left-[25px] md:block md:h-[60rem] lg:left-[257px]'
+        className='md:block -top-[50px] left-[15px] md:left-[25px] lg:left-[257px] z-20 absolute hidden w-[0.5px] h-[45rem] md:h-[60rem]'
       />
       <Separator
         orientation='vertical'
-        className='absolute -top-[50px] right-[15px] z-20 hidden h-[25rem] w-[0.5px] md:right-[25px] md:block md:h-[60rem] lg:right-[257px]'
+        className='md:block -top-[50px] right-[15px] md:right-[25px] lg:right-[257px] z-20 absolute hidden w-[0.5px] h-[25rem] md:h-[60rem]'
       />
-      <div className='mx-auto mb-7 max-w-7xl px-4 text-center sm:px-6 lg:px-8'>
-        <div className='flex items-center justify-center gap-2 py-2'>
+      <div className='mx-auto mb-7 px-4 sm:px-6 lg:px-8 max-w-7xl text-center'>
+        <div className='flex justify-center items-center gap-2 py-2'>
           <svg
             width='20'
             height='20'
@@ -43,7 +43,7 @@ export default function Features() {
               clipRule='evenodd'
             ></path>
           </svg>
-          <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none'>
+          <h1 className='font-bold text-3xl sm:text-5xl xl:text-6xl/none tracking-tighter'>
             Key Features
           </h1>
           <svg
@@ -67,7 +67,7 @@ export default function Features() {
           project.
         </p>
       </div>
-      <div className='container relative z-10 mx-auto grid max-w-7xl grid-cols-2 py-10 md:grid-cols-3 lg:grid-cols-4'>
+      <div className='relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto py-10 max-w-7xl container'>
         {/* replace tools.map with features.map and get a different look */}
         {tools.map((feature, index) => (
           <Feature key={feature.title} {...feature} index={index} />
@@ -97,22 +97,22 @@ const Feature = ({
       )}
     >
       {index < 4 && (
-        <div className='pointer-events-none absolute inset-0 h-full w-full bg-transparent opacity-0 backdrop-blur-md backdrop-filter transition duration-200 group-hover/feature:opacity-100' />
+        <div className='absolute inset-0 bg-transparent opacity-0 group-hover/feature:opacity-100 backdrop-blur-md backdrop-filter w-full h-full transition duration-200 pointer-events-none' />
       )}
       {index >= 4 && (
-        <div className='pointer-events-none absolute inset-0 h-full w-full bg-transparent opacity-0 backdrop-blur-md backdrop-filter transition duration-200 group-hover/feature:opacity-100' />
+        <div className='absolute inset-0 bg-transparent opacity-0 group-hover/feature:opacity-100 backdrop-blur-md backdrop-filter w-full h-full transition duration-200 pointer-events-none' />
       )}
       <div className='relative z-10 mb-4 px-10 text-emerald-600 dark:text-emerald-400'>
         {icon}
       </div>
-      <div className='relative z-10 mb-2 px-10 text-lg font-bold'>
-        <div className='absolute inset-y-0 left-0 h-6 w-1 origin-center rounded-br-full rounded-tr-full bg-emerald-300 transition-all duration-200 group-hover/feature:h-8 group-hover/feature:bg-emerald-500 dark:bg-emerald-700' />
-        <span className='inline-block transition duration-200 group-hover/feature:translate-x-2'>
+      <div className='relative z-10 mb-2 px-10 font-bold text-lg'>
+        <div className='group-hover/feature:h-8 group-hover/feature:bg-emerald-500 left-0 absolute inset-y-0 bg-emerald-300 dark:bg-emerald-700 rounded-tr-full rounded-br-full w-1 h-6 origin-center transition-all duration-200' />
+        <span className='inline-block transition group-hover/feature:translate-x-2 duration-200'>
           {title}
         </span>
       </div>
       {description && (
-        <p className='relative z-10 max-w-xs px-10 text-sm'>{description}</p>
+        <p className='relative z-10 px-10 max-w-xs text-sm'>{description}</p>
       )}
     </div>
   );
@@ -191,7 +191,7 @@ const tools = [
         height='512'
         viewBox='0 0 512 512'
         width='512'
-        className='h-12 w-12'
+        className='w-12 h-12'
         xmlns='http://www.w3.org/2000/svg'
       >
         <rect fill='#3178c6' height='512' rx='50' width='512' />
@@ -208,7 +208,7 @@ const tools = [
   {
     title: "Supabase",
     icon: (
-      <svg viewBox='0 0 109 113' className='h-12 w-12'>
+      <svg viewBox='0 0 109 113' className='w-12 h-12'>
         <path
           d='M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347z'
           fill='url(#supabase-icon-mark_svg__a)'
@@ -255,7 +255,7 @@ const tools = [
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 256 256'
-        className='h-12 w-12 text-black dark:text-white'
+        className='w-12 h-12 text-black dark:text-white'
       >
         <rect width='256' height='256' fill='none' />
         <line
@@ -289,7 +289,7 @@ const tools = [
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 54 33'
-        className='h-12 w-12'
+        className='w-12 h-12'
       >
         <g clipPath='url(#prefix__clip0)'>
           <path
@@ -313,7 +313,7 @@ const tools = [
       <svg
         viewBox='160 60 400 400'
         fill='none'
-        className='h-12 w-12 fill-black dark:fill-white'
+        className='w-12 h-12 fill-black dark:fill-white'
         xmlns='http://www.w3.org/2000/svg'
       >
         <path d='M186 447.471V154H318.062C336.788 154 353.697 158.053 368.79 166.158C384.163 174.263 396.181 185.443 404.845 199.698C413.51 213.672 417.842 229.604 417.842 247.491C417.842 265.938 413.51 282.568 404.845 297.381C396.181 311.915 384.302 323.375 369.209 331.759C354.117 340.144 337.067 344.337 318.062 344.337H253.917V447.471H186ZM348.667 447.471L274.041 314.99L346.99 304.509L430 447.471H348.667ZM253.917 289.835H311.773C319.04 289.835 325.329 288.298 330.639 285.223C336.229 281.869 340.421 277.258 343.216 271.388C346.291 265.519 347.828 258.811 347.828 251.265C347.828 243.718 346.151 237.15 342.797 231.56C339.443 225.691 334.552 221.219 328.124 218.144C321.975 215.07 314.428 213.533 305.484 213.533H253.917V289.835Z' />
@@ -370,7 +370,7 @@ const tools = [
     icon: (
       <svg
         viewBox='0 0 210 232'
-        className='h-12 w-12'
+        className='w-12 h-12'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >
@@ -389,7 +389,7 @@ const tools = [
         <path
           d='M111.74 1.28325C108.147 0.25665 105.11 0 104.04 0L103.719 231.305H104.361C105.901 231.305 108.425 230.45 109.494 230.022C186.489 204.357 207.663 100.2 208.625 51.3299V33.6853C208.625 31.1188 205.845 29.6216 204.454 29.1939C175.047 20.3181 115.333 2.30985 111.74 1.28325Z'
           fill='url(#paint2_linear_128_61)'
-          fill-opacity='0.21'
+          fillOpacity='0.21'
         />
         <ellipse
           cx='104.905'
@@ -413,8 +413,8 @@ const tools = [
             y2='15.0782'
             gradientUnits='userSpaceOnUse'
           >
-            <stop stop-color='#45FFC8' />
-            <stop offset='1' stop-color='#1DBBF1' />
+            <stop stopColor='#45FFC8' />
+            <stop offset='1' stopColor='#1DBBF1' />
           </linearGradient>
           <linearGradient
             id='paint1_linear_128_61'
@@ -424,9 +424,9 @@ const tools = [
             y2='190.884'
             gradientUnits='userSpaceOnUse'
           >
-            <stop stop-color='#D14AE8' />
-            <stop offset='0.552228' stop-color='#B628E3' />
-            <stop offset='1' stop-color='#8315FD' />
+            <stop stopColor='#D14AE8' />
+            <stop offset='0.552228' stopColor='#B628E3' />
+            <stop offset='1' stopColor='#8315FD' />
           </linearGradient>
           <linearGradient
             id='paint2_linear_128_61'
@@ -436,9 +436,9 @@ const tools = [
             y2='182.542'
             gradientUnits='userSpaceOnUse'
           >
-            <stop stop-color='#20ABF5' />
-            <stop offset='0.398093' stop-color='#2A8CC3' />
-            <stop offset='1' stop-color='#A104DC' />
+            <stop stopColor='#20ABF5' />
+            <stop offset='0.398093' stopColor='#2A8CC3' />
+            <stop offset='1' stopColor='#A104DC' />
           </linearGradient>
           <linearGradient
             id='paint3_linear_128_61'
@@ -448,8 +448,8 @@ const tools = [
             y2='138.912'
             gradientUnits='userSpaceOnUse'
           >
-            <stop stop-color='#FE5B01' />
-            <stop offset='1' stop-color='#FFB200' />
+            <stop stopColor='#FE5B01' />
+            <stop offset='1' stopColor='#FFB200' />
           </linearGradient>
         </defs>
       </svg>
