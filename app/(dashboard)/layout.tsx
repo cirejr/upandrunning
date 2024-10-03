@@ -6,6 +6,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { SidebarSearch } from "@/components/sidebar/nav-main";
+import { searchResults, user } from "@/config/site";
 
 
 export const metadata: Metadata = {
@@ -18,12 +19,6 @@ export default async function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const user = {
-    name: "cirejr",
-    email: "m@example.com",
-    avatar: "https://github.com/cirejr.png",
-  }
   
   const { cookies } = await import("next/headers")
 
@@ -36,7 +31,7 @@ export default async function DashboardLayout({
           <header className="flex justify-between px-2 py-2 border-b">
             <SidebarTrigger />
             <div className="max-w-md">
-              <SidebarSearch results={[]} />
+              <SidebarSearch results={searchResults} />
             </div>
             <div className="flex justify-end min-w-56">  
               <NavUser user={user} side="bottom" />
