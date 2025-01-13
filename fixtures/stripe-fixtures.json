@@ -1,0 +1,106 @@
+{
+  "_meta": {
+    "template_version": 0
+  },
+  "fixtures": [
+    {
+      "name": "prod_free",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Free",
+        "description": "SaaS Starterkit",
+        "metadata": {
+          "index": "0",
+          "feature_1": "Core SaaS features (authentication, database integration, etc.)",
+          "feature_2": "Basic documentation",
+          "feature_3": "GitHub access",
+          "feature_4": "Free components library",
+          "feature_5": "Basic UI blocks (Tailwind CSS, Next.js)",
+          "feature_6": "MIT License for personal or commercial use",
+          "feature_7": "Limited email support"
+        }
+      }
+    },
+    {
+      "name": "price_free_month",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_free:id}",
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "unit_amount": 0,
+        "recurring": {
+          "interval": "month",
+          "interval_count": 1
+        }
+      }
+    },
+    {
+      "name": "price_free_year",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_free:id}",
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "unit_amount": 0,
+        "recurring": {
+          "interval": "year",
+          "interval_count": 1
+        }
+      }
+    },
+    {
+      "name": "prod_full_web_app",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Full Web App",
+        "description": "Custom web app development for businesses",
+        "metadata": {
+          "index": "3",
+          "feature_1": "Custom full-stack web app development",
+          "feature_2": "Tailored to your specific business needs",
+          "feature_3": "Integration with third-party APIs and services",
+          "feature_4": "AI app integration (e.g., OpenAI, GPT-4)",
+          "feature_5": "Unlimited revisions during the development phase",
+          "feature_6": "Design + development consultations",
+          "feature_7": "Delivery timeline based on project scope",
+          "feature_8": "Ongoing support available with extended contract"
+        }
+      }
+    },
+    {
+      "name": "price_full_web_app_month",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_full_web_app:id}",
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "unit_amount": 100000,
+        "recurring": {
+          "interval": "month",
+          "interval_count": 1
+        }
+      }
+    },
+    {
+      "name": "price_full_web_app_year",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_full_web_app:id}",
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "unit_amount": 1200000,
+        "recurring": {
+          "interval": "year",
+          "interval_count": 1
+        }
+      }
+    }
+  ]
+}

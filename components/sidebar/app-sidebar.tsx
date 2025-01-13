@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { NavMain } from "@/components/sidebar/nav-main"
-import { NavProjects } from "@/components/sidebar/nav-projects"
-import { NavSecondary } from "@/components/sidebar/nav-secondary"
-import { NavUser } from "@/components/sidebar/nav-user"
-import { StorageCard } from "@/components/sidebar/storage-card"
-import { TeamSwitcher } from "@/components/sidebar/team-switcher"
+import { NavMain } from "@/components/sidebar/nav-main";
+import { NavProjects } from "@/components/sidebar/nav-projects";
+import { NavSecondary } from "@/components/sidebar/nav-secondary";
+import { NavUser } from "@/components/sidebar/nav-user";
+import { StorageCard } from "@/components/sidebar/storage-card";
+import { TeamSwitcher } from "@/components/sidebar/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -13,36 +13,31 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
-} from "@/components/ui/sidebar"
-import { navMain, navSecondary, projects, searchResults, teams, user } from "@/config/site"
-
+} from "@/components/ui/sidebar";
+import { navMain, navSecondary, projects, teams, user } from "@/config/site";
+import App from "next/app";
+import AppLogo from "./app-logo";
 
 export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <TeamSwitcher teams={teams} />
+        {teams.length > 1 ? (
+          <TeamSwitcher teams={teams} />
+        ) : (
+          <AppLogo team={teams[0]} />
+        )}
       </SidebarHeader>
       <SidebarContent>
         <SidebarItem>
           <SidebarLabel>Platform</SidebarLabel>
-          <NavMain items={navMain} searchResults={searchResults} />
-        </SidebarItem>
-        <SidebarItem>
-          <SidebarLabel>Projects</SidebarLabel>
-          <NavProjects projects={projects} />
-        </SidebarItem>
-        <SidebarItem className="mt-auto">
-          <SidebarLabel>Help</SidebarLabel>
-          <NavSecondary items={navSecondary} />
-        </SidebarItem>
-        <SidebarItem>
-          <StorageCard />
+          <NavMain items={navMain} />
         </SidebarItem>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="flex-col">
+        <StorageCard />
         <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

@@ -4,13 +4,9 @@ import {
   ChevronsUpDown,
   CreditCard,
   LogOut,
-} from "lucide-react"
+} from "lucide-react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,18 +15,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import { User } from "@supabase/supabase-js";
 
 export function NavUser({
   side,
   user,
 }: {
-  side?: 'left' | 'right' | 'bottom' | 'top'
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
+  side?: "left" | "right" | "bottom" | "top";
+  user: User;
 }) {
   return (
     <DropdownMenu>
@@ -38,14 +31,14 @@ export function NavUser({
         <div className="flex items-center gap-2 px-2 py-1 text-left text-sm transition-all">
           <Avatar className="border rounded-full w-7 h-7">
             <AvatarImage
-              src={user.avatar}
-              alt={user.name}
+              src={user.user_metadata?.avatar_url}
+              alt={user.user_metadata?.full_name}
               className="zoom-in-90 animate-in fade-in-50"
             />
             <AvatarFallback className="rounded-md">Jr</AvatarFallback>
           </Avatar>
           <div className="flex-1 grid leading-none">
-            <div className="font-medium">{user.name}</div>
+            <div className="font-medium">{user.user_metadata?.full_name}</div>
             <div className="text-muted-foreground text-xs overflow-hidden">
               <div className="line-clamp-1">{user.email}</div>
             </div>
@@ -62,11 +55,14 @@ export function NavUser({
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm transition-all">
             <Avatar className="w-7 h-7">
-              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarImage
+                src={user.app_metadata?.avatar_url}
+                alt={user.user_metadata?.full_name}
+              />
               <AvatarFallback>Jr</AvatarFallback>
             </Avatar>
             <div className="flex-1 grid">
-              <div className="font-medium">{user.name}</div>
+              <div className="font-medium">{user.user_metadata?.full_name}</div>
               <div className="text-muted-foreground text-xs overflow-hidden">
                 <div className="line-clamp-1">{user.email}</div>
               </div>
@@ -95,5 +91,5 @@ export function NavUser({
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
