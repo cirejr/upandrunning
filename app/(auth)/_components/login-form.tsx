@@ -55,7 +55,7 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
         toast.error(
           res.error === "Invalid login credentials"
             ? "Identifiants de connexion incorrects"
-            : res.error,
+            : res.error
         );
     } catch (error) {
       toast.error("une erreur est survenue veuillez ressayer");
@@ -80,9 +80,9 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
 
   return (
     <div className={cn("grid gap-6 dark w-full", className)} {...props}>
-      <h1 className='text-3xl font-semibold'>Welcome back,</h1>
-      <p className='text-muted-foreground'>Log in into your account</p>
-      <Separator className='h-px w-full bg-border' />
+      <h1 className="text-3xl font-semibold">Welcome back,</h1>
+      <p className="text-muted-foreground">Log in into your account</p>
+      <Separator className="h-px w-full bg-border" />
 
       <GoogleButton
         isLoading={isLoading}
@@ -96,60 +96,60 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
         onClick={() => handleOAuthLogin("github")}
       />
 
-      <div className='flex items-center justify-between gap-3 w-full '>
-        <Separator className='h-px w-1/4 bg-border' />
-        <p className='px-2 text-muted-foreground text-xs uppercase w-fit'>
+      <div className="flex items-center justify-between gap-3 w-full ">
+        <Separator className="h-px w-1/4 bg-border" />
+        <p className="px-2 text-muted-foreground text-xs uppercase w-fit">
           Or continue with
         </p>
-        <Separator className='h-px w-1/4 bg-border' />
+        <Separator className="h-px w-1/4 bg-border" />
       </div>
       <form onSubmit={onSubmit}>
-        <div className='grid gap-2 space-y-4 text-muted-foreground'>
-          <div className='grid gap-3'>
-            <Label htmlFor='email'>Email</Label>
+        <div className="grid gap-2 space-y-4 text-muted-foreground">
+          <div className="grid gap-3">
+            <Label htmlFor="email">Email</Label>
             <Input
-              id='email'
-              placeholder='name@example.com'
-              type='email'
-              autoCapitalize='none'
-              autoCorrect='off'
+              id="email"
+              placeholder="name@example.com"
+              type="email"
+              autoCapitalize="none"
+              autoCorrect="off"
               disabled={isLoading}
-              className='glass'
+              className="glass"
               {...register("email")}
             />
             {errors.email && (
-              <p className='text-sm text-red-500'>{errors.email.message}</p>
+              <p className="text-sm text-red-500">{errors.email.message}</p>
             )}
           </div>
-          <div className='grid gap-3'>
-            <Label htmlFor='password'>Password</Label>
+          <div className="grid gap-3">
+            <Label htmlFor="password">Password</Label>
             <Input
-              id='password'
-              placeholder='• • • • • • • • • • • •'
-              type='password'
-              autoCapitalize='none'
-              autoCorrect='off'
+              id="password"
+              placeholder="• • • • • • • • • • • •"
+              type="password"
+              autoCapitalize="none"
+              autoCorrect="off"
               disabled={isLoading}
-              className='glass'
+              className="glass"
               {...register("password")}
             />
             {errors.password && (
-              <p className='text-sm text-red-500'>{errors.password.message}</p>
+              <p className="text-sm text-red-500">{errors.password.message}</p>
             )}
           </div>
-          <Button disabled={isLoading} size='lg'>
+          <Button disabled={isLoading} size="lg">
             {loadingButton === "email" && (
-              <FaSpinner className='mr-2 h-4 w-4 animate-spin' />
+              <FaSpinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            <MailIcon className='mr-2 h-4 w-4' />
+            <MailIcon className="mr-2 h-4 w-4" />
             Log in with email
           </Button>
         </div>
       </form>
-      <div className='text-sm text-muted-foreground'>
-        <h4>Don't have an account?</h4>
-        <Link href='/auth/register'>
-          Create one <span className='text-primary'>here</span>
+      <div className="text-sm text-muted-foreground">
+        <h4>Don&apos;t have an account?</h4>
+        <Link href="/auth/register">
+          Create one <span className="text-primary">here</span>
         </Link>
       </div>
     </div>

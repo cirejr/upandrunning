@@ -1,26 +1,25 @@
-import { 
-  ArrowLeft, 
-  Braces, 
-  User2,
+import {
   Atom,
-  Bird,
   BookOpen,
-  Bot,
   Code2,
-  Eclipse,
   Frame,
-  History,
   LifeBuoy,
   Map,
   PieChart,
-  Rabbit,
   Send,
   Settings2,
   SquareTerminal,
-  Star,
-  Turtle,
-} from "lucide-react"
-
+  Key,
+  Settings,
+  FileText,
+  BarChart2,
+  Folder,
+  FolderOpen,
+  PlusCircle,
+  Users,
+  User,
+  Lock,
+} from "lucide-react";
 
 /* Replace the title and href of the links below with your own site navbar links*/
 export const links = [
@@ -31,217 +30,151 @@ export const links = [
 ];
 
 export const teams = [
-    {
-      name: "Acme Inc",
-      logo: Atom,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: Eclipse,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Rabbit,
-      plan: "Free",
-    },
-  ]
+  {
+    name: "Acme Inc",
+    logo: Atom,
+    plan: "Enterprise",
+  },
+];
 
-  export const user = {
-    name: "cirejr",
-    email: "m@example.com",
-    avatar: "/avatars/cirejr.jpg",
-  }
+export const user = {
+  id: "123e4567-e89b-12d3-a456-42",
+  aud: "authenticated",
+  role: "authenticated",
+  email: "cire@example.com",
+  email_confirmed_at: "2023-01-01T00:00:00.000Z",
+  phone: "",
+  confirmed_at: "2023-01-01T00:00:00.000Z",
+  last_sign_in_at: "2023-01-01T00:00:00.000Z",
+  app_metadata: {
+    provider: "email",
+    providers: ["email"],
+  },
+  user_metadata: {
+    full_name: "Cire",
+    avatar_url: "https://avatars.githubusercontent.com/u/101927?v=4",
+  },
+  identities: [],
+  created_at: "2023-01-01T00:00:00.000Z",
+  updated_at: "2023-01-01T00:00:00.000Z",
+};
+export const navMain = [
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: SquareTerminal,
+  },
+  {
+    title: "Account",
+    url: "/dashboard/account",
+    icon: Settings2,
+    items: [
+      {
+        title: "Manage Subscription",
+        url: "#",
+        icon: Settings,
+        description: "Update your plan or payment details.",
+      },
+      {
+        title: "Billing History",
+        url: "#",
+        icon: FileText,
+        description: "Access your invoices and payment records.",
+      },
+      {
+        title: "Usage Limits",
+        url: "#",
+        icon: BarChart2,
+        description: "Monitor your API usage and plan limits.",
+      },
+    ],
+  },
+  {
+    title: "Projects",
+    url: "#",
+    icon: Folder,
+    items: [
+      {
+        title: "All Projects",
+        url: "#",
+        icon: FolderOpen,
+        description: "Manage all your active and archived projects.",
+      },
+      {
+        title: "New Project",
+        url: "#",
+        icon: PlusCircle,
+        description: "Start a new project quickly.",
+      },
+    ],
+  },
+  {
+    title: "Team",
+    url: "#",
+    icon: Users,
+    items: [
+      {
+        title: "Manage Team",
+        url: "#",
+        icon: User,
+        description: "Invite and manage team members.",
+      },
+      {
+        title: "Roles & Permissions",
+        url: "#",
+        icon: Lock,
+        description: "Define team roles and access levels.",
+      },
+    ],
+  },
+  {
+    title: "API",
+    url: "#",
+    icon: Code2,
+    items: [
+      {
+        title: "API Keys",
+        url: "#",
+        icon: Key,
+        description: "Manage your API keys securely.",
+      },
+      {
+        title: "Documentation",
+        url: "#",
+        icon: BookOpen,
+        description: "Explore API endpoints and examples.",
+      },
+    ],
+  },
+];
 
-  export const navMain = [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-          icon: History,
-          description: "View your recent prompts",
-        },
-        {
-          title: "Starred",
-          url: "#",
-          icon: Star,
-          description: "Browse your starred prompts",
-        },
-        {
-          title: "Settings",
-          url: "#",
-          icon: Settings2,
-          description: "Configure your playground",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-          icon: Rabbit,
-          description: "Our fastest model for general use cases.",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-          icon: Bird,
-          description: "Performance and speed for efficiency.",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-          icon: Turtle,
-          description: "The most powerful model for complex computations.",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API",
-      url: "#",
-      icon: Code2,
-      items: [
-        {
-          title: "Chat",
-          url: "#",
-        },
-        {
-          title: "Completion",
-          url: "#",
-        },
-        {
-          title: "Images",
-          url: "#",
-        },
-        {
-          title: "Video",
-          url: "#",
-        },
-        {
-          title: "Speech",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ]
+export const navSecondary = [
+  {
+    title: "Support",
+    url: "#",
+    icon: LifeBuoy,
+  },
+  {
+    title: "Feedback",
+    url: "#",
+    icon: Send,
+  },
+];
 
-  export const navSecondary = [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ]
-
-  export const projects = [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ]
-
-  export const searchResults = [
-    {
-      title: "Routing Fundamentals",
-      teaser:
-        "The skeleton of every application is routing. This page will introduce you to the fundamental concepts of routing for the web and how to handle routing in Next.js.",
-      url: "#",
-    },
-    {
-      title: "Layouts and Templates",
-      teaser:
-        "The special files layout.js and template.js allow you to create UI that is shared between routes. This page will guide you through how and when to use these special files.",
-      url: "#",
-    },
-    {
-      title: "Data Fetching, Caching, and Revalidating",
-      teaser:
-        "Data fetching is a core part of any application. This page goes through how you can fetch, cache, and revalidate data in React and Next.js.",
-      url: "#",
-    },
-    {
-      title: "Server and Client Composition Patterns",
-      teaser:
-        "When building React applications, you will need to consider what parts of your application should be rendered on the server or the client. ",
-      url: "#",
-    },
-    {
-      title: "Server Actions and Mutations",
-      teaser:
-        "Server Actions are asynchronous functions that are executed on the server. They can be used in Server and Client Components to handle form submissions and data mutations in Next.js applications.",
-      url: "#",
-    },
-  ]
-
+export const projects = [
+  {
+    name: "Design Engineering",
+    url: "#",
+    icon: Frame,
+  },
+  {
+    name: "Sales & Marketing",
+    url: "#",
+    icon: PieChart,
+  },
+  {
+    name: "Travel",
+    url: "#",
+    icon: Map,
+  },
+];
