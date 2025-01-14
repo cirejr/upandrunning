@@ -11,37 +11,37 @@ import {
 
 export function Features02() {
   return (
-    <div className=''>
-      <div className='mb-20 px-8'>
-        <h4 className='mx-auto max-w-5xl text-center text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none'>
+    <div className="">
+      <div className="mb-20 px-8">
+        <h4 className="mx-auto max-w-5xl text-center text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
           Packed with all the essential SaaS features
         </h4>
 
-        <p className='mx-auto my-4 max-w-2xl text-center text-muted-foreground md:text-xl'>
+        <p className="mx-auto my-4 max-w-2xl text-center text-muted-foreground md:text-xl">
           From authentication to payment integration, our boilerplate has
-          everything you need to launch your SaaS product quickly. It's like
-          having a team of expert developers at your fingertips.
+          everything you need to launch your SaaS product quickly. It&apos;s
+          like having a team of expert developers at your fingertips.
         </p>
       </div>
 
-      <div className='z-0 mx-auto grid w-full grid-cols-1 justify-evenly gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-10 lg:grid-cols-3'>
+      <div className="z-0 mx-auto grid w-full grid-cols-1 justify-evenly gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-10 lg:grid-cols-3">
         {grid.map((feature) => (
           <div
             key={feature.title}
-            className='w-7/8 relative overflow-hidden rounded-lg bg-gradient-to-b from-zinc-100 to-white p-6 dark:from-zinc-800 dark:to-background'
+            className="w-7/8 relative overflow-hidden rounded-lg bg-gradient-to-b from-zinc-100 to-white p-6 dark:from-zinc-800 dark:to-background"
           >
             <Grid size={20} />
-            <div className='flex items-center gap-2'>
+            <div className="flex items-center gap-2">
               {feature.icon && (
-                <div className='flex w-fit items-center justify-center rounded-md border-r border-t bg-secondary p-4 shadow-lg dark:border-r-white dark:border-t-white dark:border-opacity-10'>
+                <div className="flex w-fit items-center justify-center rounded-md border-r border-t bg-secondary p-4 shadow-lg dark:border-r-white dark:border-t-white dark:border-opacity-10">
                   {feature.icon}
                 </div>
               )}
-              <p className='relative text-base font-bold text-zinc-800 dark:text-white'>
+              <p className="relative text-base font-bold text-zinc-800 dark:text-white">
                 {feature.title}
               </p>
             </div>
-            <p className='relative mt-4 text-base font-normal text-foreground'>
+            <p className="relative mt-4 text-base font-normal text-foreground">
               {feature.description}
             </p>
           </div>
