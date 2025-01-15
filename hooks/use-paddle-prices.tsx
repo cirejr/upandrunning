@@ -10,8 +10,8 @@ export type PaddlePrices = Record<string, string>;
 
 function getLineItems(): PricePreviewParams["items"] {
   const priceId = PricingTier.map((tier) => [
-    tier.priceId?.month,
-    tier.priceId?.year,
+    tier.priceId.month,
+    tier.priceId.year,
   ]);
   return priceId.flat().map((priceId) => ({ priceId, quantity: 1 }));
 }

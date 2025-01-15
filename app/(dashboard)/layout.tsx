@@ -32,7 +32,6 @@ export default async function DashboardLayout({
         <header className="flex justify-between px-2 py-2 border-b">
           <SidebarTrigger />
           <div className="flex justify-end min-w-56">
-            {/* @ts-ignore */}
             <NavUser user={user} side="bottom" />
           </div>
         </header>
