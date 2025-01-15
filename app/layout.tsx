@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Up And Running",
@@ -16,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={cn("font-geist-sans", GeistSans.className)}>
+      <body
+        className={cn("font-geist-sans overflow-x-hidden", GeistSans.className)}
+      >
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
@@ -24,6 +28,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster closeButton />
         </ThemeProvider>
       </body>
     </html>
