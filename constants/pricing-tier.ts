@@ -4,7 +4,7 @@ export interface Tier {
   description: string;
   features: string[];
   featured: boolean;
-  priceId?: Record<string, string>;
+  priceId: Record<string, string>;
   externalLink?: string;
   isEntreprise?: boolean;
 }
@@ -43,6 +43,10 @@ export const PricingTier: Tier[] = [
     ],
     featured: false,
     externalLink: "/templates",
+    priceId: {
+      month: "pri_01jh8ept6c8qgz34hy4gf53g8f",
+      year: "pri_01hsxyh9txq4rzbrhbyngkhy46",
+    },
   },
   {
     name: "Pages/Dashboard",
@@ -82,5 +86,9 @@ export const PricingTier: Tier[] = [
     featured: false,
     externalLink: "/contacts",
     isEntreprise: true,
+    priceId: {
+      month: "pri_01jh8ept6c8qgz34hy4gf53g8f",
+      year: "pri_01hsxyh9txq4rzbrhbyngkhy46",
+    },
   },
 ];
