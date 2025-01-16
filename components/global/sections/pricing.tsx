@@ -9,9 +9,10 @@ import {
   BillingFrequency,
   IBillingFrequency,
 } from "@/constants/billing-frequency";
+import { Toggle } from "./pricing/toggle";
 
 export default function PricingSection({
-  country = "OTHERS",
+  country = "US",
 }: {
   country?: string;
 }) {
@@ -54,6 +55,7 @@ export default function PricingSection({
               </p>
             </div>
           </div>
+          <Toggle frequency={frequency} setFrequency={setFrequency} />
           <div className="grid gap-px md:grid-cols-4">
             {PricingTier.map((tier, index) => (
               <PricingCard

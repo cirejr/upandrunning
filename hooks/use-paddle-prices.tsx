@@ -48,5 +48,6 @@ export function usePaddlePrices(
         setLoading(false);
       });
   }, [country, paddle]);
+
   return { prices, loading };
 }

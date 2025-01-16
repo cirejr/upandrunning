@@ -14,8 +14,7 @@ import {
   SidebarItem,
   SidebarLabel,
 } from "@/components/ui/sidebar";
-import { navMain, navSecondary, projects, teams, user } from "@/config/site";
-import App from "next/app";
+import { navMain, teams, user } from "@/config/site";
 import AppLogo from "./app-logo";
 
 export function AppSidebar() {

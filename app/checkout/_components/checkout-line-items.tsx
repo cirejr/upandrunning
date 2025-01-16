@@ -30,15 +30,16 @@ export function CheckoutLineItems({
 }: Props) {
   return (
     <>
-      <div className={"md:pt-12 text-base leading-[20px] font-medium"}>
+      <div className={"text-base font-medium leading-[20px] md:pt-12"}>
         {checkoutData?.items[0].price_name}
       </div>
-      <QuantityField
+      {/* Uncomment this if you want to add quantity field */}
+      {/* <QuantityField
         quantity={quantity}
         handleQuantityChange={handleQuantityChange}
-      />
-      <Separator className={"bg-border/50 mt-6"} />
-      <div className={"pt-6 flex justify-between"}>
+      /> */}
+      <Separator className={"mt-6 bg-border/50"} />
+      <div className={"flex justify-between pt-6"}>
         <span
           className={
             "text-base leading-[20px] font-medium text-muted-foreground"
@@ -46,14 +47,14 @@ export function CheckoutLineItems({
         >
           Subtotal
         </span>
-        <span className={"text-base leading-[20px] font-semibold"}>
+        <span className={"text-base font-semibold leading-[20px]"}>
           <LoadingText
             currencyCode={checkoutData?.currency_code}
             value={checkoutData?.totals.subtotal}
           />
         </span>
       </div>
-      <div className={"pt-6 flex justify-between"}>
+      <div className={"flex justify-between pt-6"}>
         <span
           className={
             "text-base leading-[20px] font-medium text-muted-foreground"
@@ -61,15 +62,15 @@ export function CheckoutLineItems({
         >
           Tax
         </span>
-        <span className={"text-base leading-[20px] font-semibold"}>
+        <span className={"text-base font-semibold leading-[20px]"}>
           <LoadingText
             currencyCode={checkoutData?.currency_code}
             value={checkoutData?.totals.tax}
           />
         </span>
       </div>
-      <Separator className={"bg-border/50 mt-6"} />
-      <div className={"pt-6 flex justify-between"}>
+      <Separator className={"mt-6 bg-border/50"} />
+      <div className={"flex justify-between pt-6"}>
         <span
           className={
             "text-base leading-[20px] font-medium text-muted-foreground"
@@ -77,7 +78,7 @@ export function CheckoutLineItems({
         >
           Due today
         </span>
-        <span className={"text-base leading-[20px] font-semibold"}>
+        <span className={"text-base font-semibold leading-[20px]"}>
           <LoadingText
             currencyCode={checkoutData?.currency_code}
             value={checkoutData?.totals.total}

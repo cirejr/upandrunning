@@ -27,6 +27,8 @@ export const links = [
   { title: "Features", href: "#features" },
   { title: "Benefits", href: "#benefits" },
   { title: "Pricing", href: "#pricing" },
+  { title: "dashboard", href: "/dashboard" },
+  { title: "Sign In", href: "/auth/login" },
 ];
 
 export const teams = [
@@ -64,85 +66,27 @@ export const navMain = [
     url: "/dashboard",
     icon: SquareTerminal,
   },
+
+  {
+    title: "Manage Subscription",
+    url: "/subscriptions",
+    icon: Settings,
+  },
+  {
+    title: "Billing History",
+    url: "/billing",
+    icon: FileText,
+  },
   {
     title: "Account",
     url: "/dashboard/account",
     icon: Settings2,
     items: [
       {
-        title: "Manage Subscription",
-        url: "#",
-        icon: Settings,
-        description: "Update your plan or payment details.",
-      },
-      {
-        title: "Billing History",
-        url: "#",
-        icon: FileText,
-        description: "Access your invoices and payment records.",
-      },
-      {
         title: "Usage Limits",
         url: "#",
         icon: BarChart2,
         description: "Monitor your API usage and plan limits.",
-      },
-    ],
-  },
-  {
-    title: "Projects",
-    url: "#",
-    icon: Folder,
-    items: [
-      {
-        title: "All Projects",
-        url: "#",
-        icon: FolderOpen,
-        description: "Manage all your active and archived projects.",
-      },
-      {
-        title: "New Project",
-        url: "#",
-        icon: PlusCircle,
-        description: "Start a new project quickly.",
-      },
-    ],
-  },
-  {
-    title: "Team",
-    url: "#",
-    icon: Users,
-    items: [
-      {
-        title: "Manage Team",
-        url: "#",
-        icon: User,
-        description: "Invite and manage team members.",
-      },
-      {
-        title: "Roles & Permissions",
-        url: "#",
-        icon: Lock,
-        description: "Define team roles and access levels.",
-      },
-    ],
-  },
-  {
-    title: "API",
-    url: "#",
-    icon: Code2,
-    items: [
-      {
-        title: "API Keys",
-        url: "#",
-        icon: Key,
-        description: "Manage your API keys securely.",
-      },
-      {
-        title: "Documentation",
-        url: "#",
-        icon: BookOpen,
-        description: "Explore API endpoints and examples.",
       },
     ],
   },
