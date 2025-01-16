@@ -21,7 +21,7 @@ export default function EmailWaitlist() {
     <section className="bg-gradient-transparent relative w-full border-b border-t py-12 md:py-24 lg:py-32">
       <Separator
         orientation="vertical"
-        className="absolute -top-[50px] left-[15px] h-[25rem] w-[0.5px] md:left-[25px] md:h-[36rem] lg:left-[257px]"
+        className="absolute -top-[50px] left-[15px] h-[25rem] w-[1px] md:left-[25px] md:h-[36rem] lg:left-[257px]"
       />
       <Separator
         orientation="vertical"

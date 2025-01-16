@@ -9,14 +9,13 @@ import { Provider } from "@supabase/supabase-js";
 const supabase = createClient();
 
 export async function signInWithPassword(formData: FormData) {
-
   const dataToSend = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
 
   const { data: authData, error } = await supabase.auth.signInWithPassword(
-    dataToSend,
+    dataToSend
   );
 
   if (error) {
@@ -28,11 +27,9 @@ export async function signInWithPassword(formData: FormData) {
 }
 
 export async function signUpWithPassword(formData: FormData) {
-
   // Extracting form data
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
-  const name = formData.get("name") as string;
 
   // Sign up user with Supabase
   const { error, data } = await supabase.auth.signUp({
@@ -50,15 +47,30 @@ export async function signUpWithPassword(formData: FormData) {
 
 export async function signInWithOAuth(provider: Provider) {
   const { data, error } = await supabase.auth.signInWithOAuth({
-  provider: provider,
-  options: {
-    redirectTo: 'http://localhost:3000/api/auth/callback',
-  },
-})
+    provider: provider,
+    options: {
+      redirectTo: "http://localhost:3000/api/auth/callback",
+    },
+  });
 
-if (data.url) {
-  redirect(data.url) 
+  if (data.url) {
+    redirect(data.url);
+  }
 }
 
-}
+export async function loginAnonymously() {
+  const supabase = createClient();
+  const { error: signInError } = await supabase.auth.signInAnonymously();
+  const { error: updateUserError } = await supabase.auth.updateUser({
+    email: `anonymous+${Date.now().toString(36)}@example.com`,
+  });
 
+  console.log("error", signInError, updateUserError);
+
+  if (signInError || updateUserError) {
+    return { error: true };
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/");
+}

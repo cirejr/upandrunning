@@ -20,7 +20,7 @@ export default function Features() {
     >
       <Separator
         orientation="vertical"
-        className="md:block -top-[50px] left-[15px] md:left-[25px] lg:left-[257px] z-20 absolute hidden w-[0.5px] h-[45rem] md:h-[60rem]"
+        className="md:block -top-[50px] left-[15px] md:left-[25px] lg:left-[257px] z-20 absolute hidden w-[1px] h-[45rem] md:h-[60rem]"
       />
       <Separator
         orientation="vertical"

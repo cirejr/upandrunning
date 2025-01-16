@@ -9,7 +9,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Provider } from "@supabase/supabase-js";
 
-import { signInWithOAuth, signInWithPassword } from "../auth/actions";
+import {
+  loginAnonymously,
+  signInWithOAuth,
+  signInWithPassword,
+} from "../auth/actions";
 import { GithubButton, GoogleButton } from "./social-login-buttons";
 import { loginSchema } from "./auth-schema";
 import { cn } from "@/lib/utils";
@@ -65,6 +69,14 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     }
   });
 
+  function handleAnonymousLogin() {
+    loginAnonymously().then((data) => {
+      if (data?.error) {
+        toast.error("Something went wrong. Please try again");
+      }
+    });
+  }
+
   const handleOAuthLogin = async (provider: Provider) => {
     setIsLoading(true);
     setLoadingButton(provider);
@@ -84,6 +96,15 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
       <p className="text-muted-foreground">Log in into your account</p>
       <Separator className="h-px w-full bg-border" />
 
+      {/* <Button
+        onClick={() => handleAnonymousLogin()}
+        type={"button"}
+        variant={"outline"}
+        className={"glass w-full"}
+      >
+        Log in as Guest
+      </Button> */}
+
       <GoogleButton
         isLoading={isLoading}
         isLoadingButton={loadingButton === "google"}
@@ -96,9 +117,9 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
         onClick={() => handleOAuthLogin("github")}
       />
 
-      <div className="flex items-center justify-between gap-3 w-full ">
+      <div className="flex w-full items-center justify-between gap-3">
         <Separator className="h-px w-1/4 bg-border" />
-        <p className="px-2 text-muted-foreground text-xs uppercase w-fit">
+        <p className="w-fit px-2 text-xs uppercase text-muted-foreground">
           Or continue with
         </p>
         <Separator className="h-px w-1/4 bg-border" />

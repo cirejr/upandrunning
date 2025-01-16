@@ -14,7 +14,7 @@ export default async function CheckoutPage() {
     >
       <Separator
         orientation="vertical"
-        className="absolute -top-[50px] left-[15px] z-20 hidden h-[45rem] w-[0.5px] md:left-[25px] md:block md:h-[70rem] lg:left-[257px]"
+        className="absolute -top-[50px] left-[15px] z-20 hidden h-[45rem] w-[1px] md:left-[25px] md:block md:h-[70rem] lg:left-[257px]"
       />
       <Separator
         orientation="vertical"
