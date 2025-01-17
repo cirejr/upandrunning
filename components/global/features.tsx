@@ -16,18 +16,18 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="dark:none bg-gradient-transparent backdrop-blur-xl mb-10 py-14 border-t border-b backdrop:filter"
+      className="dark:none bg-gradient-transparent mb-10 border-b border-t py-14 backdrop-blur-xl backdrop:filter"
     >
       <Separator
         orientation="vertical"
-        className="md:block -top-[50px] left-[15px] md:left-[25px] lg:left-[257px] z-20 absolute hidden w-[0.5px] h-[45rem] md:h-[60rem]"
+        className="absolute -top-[50px] left-[15px] z-20 hidden h-[45rem] w-[1px] md:left-[25px] md:block md:h-[60rem] lg:left-[257px]"
       />
       <Separator
         orientation="vertical"
-        className="md:block -top-[50px] right-[15px] md:right-[25px] lg:right-[257px] z-20 absolute hidden w-[1px] h-[25rem] md:h-[60rem]"
+        className="absolute -top-[50px] right-[15px] z-20 hidden h-[25rem] w-[1px] md:right-[25px] md:block md:h-[60rem] lg:right-[257px]"
       />
-      <div className="mx-auto mb-7 px-4 sm:px-6 lg:px-8 max-w-7xl text-center">
-        <div className="flex justify-center items-center gap-2 py-2">
+      <div className="mx-auto mb-7 max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center gap-2 py-2">
           <svg
             width="20"
             height="20"
@@ -43,7 +43,7 @@ export default function Features() {
               clipRule="evenodd"
             ></path>
           </svg>
-          <h1 className="font-bold text-3xl sm:text-5xl xl:text-6xl/none tracking-tighter">
+          <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
             Key Features
           </h1>
           <svg
@@ -67,7 +67,7 @@ export default function Features() {
           project.
         </p>
       </div>
-      <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto py-10 max-w-7xl container">
+      <div className="container relative z-10 mx-auto grid max-w-7xl grid-cols-2 py-10 md:grid-cols-3 lg:grid-cols-4">
         {/* replace tools.map with features.map and get a different look */}
         {tools.map((feature, index) => (
           <Feature key={feature.title} {...feature} index={index} />
@@ -97,22 +97,22 @@ const Feature = ({
       )}
     >
       {index < 4 && (
-        <div className="absolute inset-0 bg-transparent opacity-0 group-hover/feature:opacity-100 backdrop-blur-md backdrop-filter w-full h-full transition duration-200 pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 h-full w-full bg-transparent opacity-0 backdrop-blur-md backdrop-filter transition duration-200 group-hover/feature:opacity-100" />
       )}
       {index >= 4 && (
-        <div className="absolute inset-0 bg-transparent opacity-0 group-hover/feature:opacity-100 backdrop-blur-md backdrop-filter w-full h-full transition duration-200 pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 h-full w-full bg-transparent opacity-0 backdrop-blur-md backdrop-filter transition duration-200 group-hover/feature:opacity-100" />
       )}
       <div className="relative z-10 mb-4 px-10 text-emerald-600 dark:text-emerald-400">
         {icon}
       </div>
-      <div className="relative z-10 mb-2 px-10 font-bold text-lg">
-        <div className="group-hover/feature:h-8 group-hover/feature:bg-emerald-500 left-0 absolute inset-y-0 bg-emerald-300 dark:bg-emerald-700 rounded-tr-full rounded-br-full w-1 h-6 origin-center transition-all duration-200" />
-        <span className="inline-block transition group-hover/feature:translate-x-2 duration-200">
+      <div className="relative z-10 mb-2 px-10 text-lg font-bold">
+        <div className="absolute inset-y-0 left-0 h-6 w-1 origin-center rounded-br-full rounded-tr-full bg-emerald-300 transition-all duration-200 group-hover/feature:h-8 group-hover/feature:bg-emerald-500 dark:bg-emerald-700" />
+        <span className="inline-block transition duration-200 group-hover/feature:translate-x-2">
           {title}
         </span>
       </div>
       {description && (
-        <p className="relative z-10 px-10 max-w-xs text-sm">{description}</p>
+        <p className="relative z-10 max-w-xs px-10 text-sm">{description}</p>
       )}
     </div>
   );
@@ -191,7 +191,7 @@ const tools = [
         height="512"
         viewBox="0 0 512 512"
         width="512"
-        className="w-12 h-12"
+        className="h-12 w-12"
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect fill="#3178c6" height="512" rx="50" width="512" />
@@ -208,7 +208,7 @@ const tools = [
   {
     title: "Supabase",
     icon: (
-      <svg viewBox="0 0 109 113" className="w-12 h-12">
+      <svg viewBox="0 0 109 113" className="h-12 w-12">
         <path
           d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347z"
           fill="url(#supabase-icon-mark_svg__a)"
@@ -255,7 +255,7 @@ const tools = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"
-        className="w-12 h-12 text-black dark:text-white"
+        className="h-12 w-12 text-black dark:text-white"
       >
         <rect width="256" height="256" fill="none" />
         <line
@@ -289,7 +289,7 @@ const tools = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 54 33"
-        className="w-12 h-12"
+        className="h-12 w-12"
       >
         <g clipPath="url(#prefix__clip0)">
           <path
@@ -313,7 +313,7 @@ const tools = [
       <svg
         viewBox="160 60 400 400"
         fill="none"
-        className="w-12 h-12 fill-black dark:fill-white"
+        className="h-12 w-12 fill-black dark:fill-white"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path d="M186 447.471V154H318.062C336.788 154 353.697 158.053 368.79 166.158C384.163 174.263 396.181 185.443 404.845 199.698C413.51 213.672 417.842 229.604 417.842 247.491C417.842 265.938 413.51 282.568 404.845 297.381C396.181 311.915 384.302 323.375 369.209 331.759C354.117 340.144 337.067 344.337 318.062 344.337H253.917V447.471H186ZM348.667 447.471L274.041 314.99L346.99 304.509L430 447.471H348.667ZM253.917 289.835H311.773C319.04 289.835 325.329 288.298 330.639 285.223C336.229 281.869 340.421 277.258 343.216 271.388C346.291 265.519 347.828 258.811 347.828 251.265C347.828 243.718 346.151 237.15 342.797 231.56C339.443 225.691 334.552 221.219 328.124 218.144C321.975 215.07 314.428 213.533 305.484 213.533H253.917V289.835Z" />
@@ -321,6 +321,21 @@ const tools = [
     ),
   },
   {
+    title: "paddle",
+    icon: (
+      <svg
+        viewBox="100 282 512 60"
+        className="h-12 w-24 md:w-48"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          className="fill-black dark:fill-white"
+          d="M312.8 289.5c10.9 0 20.6 5.5 26.7 14.1v-46.2h12.4v102.9h-12.4v-11.9c-6.1 8.7-15.7 14.1-26.7 14.1-20.4 0-37.7-16-37.7-36.5 0-20.4 17.3-36.5 37.7-36.5zm0 62c16.2 0 26.7-10.8 26.7-25.5s-10.5-25.5-26.7-25.5c-14.4 0-25.3 10.3-25.3 25.5 0 15.2 10.9 25.5 25.3 25.5zm-58.4-48c-6.1-8.6-15.7-14.1-26.7-14.1-20.4 0-37.7 16-37.7 36.5 0 20.4 17.3 36.5 37.7 36.5 10.8 0 20.4-5.5 26.7-14.1v11.9h12.4v-68.6h-12.4v11.9zm0 22.4c0 14.5-10.6 25.5-26.7 25.5-14.4 0-25.3-10.3-25.3-25.5 0-15.2 10.9-25.5 25.3-25.5 16.1 0 26.7 10.8 26.7 25.5zm-155.5-1.8v3.7c2.3 0 4.5.4 6.6 1.3 2.1.9 4 2.1 5.6 3.7 1.6 1.6 2.9 3.5 3.7 5.6.9 2.1 1.3 4.3 1.3 6.6h3.5c0-4.5 1.8-8.9 5.1-12.1s7.6-5 12.2-5v-3.7c-2.3 0-4.5-.4-6.6-1.3-2.1-.9-4-2.1-5.6-3.7-1.6-1.6-2.9-3.5-3.7-5.6s-1.3-4.3-1.3-6.6h-3.5c0 4.5-1.8 8.9-5.1 12.1-3.3 3.2-7.7 5-12.2 5zm46.9-23.6h-29.7v-11h29.7c20.9 0 37.3 16.3 37.3 36.3s-16.4 36.3-37.3 36.3h-17.3v32.2h-12.4v-43.2h29.7c14.5 0 24.9-10.3 24.9-25.4s-10.4-25.2-24.9-25.2zm280.1 3c-6.1-8.6-15.7-14.1-26.7-14.1-20.4 0-37.7 16-37.7 36.5 0 20.4 17.3 36.5 37.7 36.5 10.9 0 20.6-5.5 26.7-14.1v11.9h12.4V257.4h-12.4v46.2zm0 22.4c0 14.7-10.5 25.5-26.7 25.5-14.4 0-25.3-10.3-25.3-25.5 0-15.2 10.9-25.5 25.3-25.5 16.2 0 26.7 10.8 26.7 25.5zm24.9 34.3V257.4h12.4v102.9h-12.4zm93.8-29.5c0-22.6-11.5-41.1-35.4-41.1-20.9 0-37 16.6-37 36.3 0 19.7 16.2 36.3 37 36.3 16.6 0 28.9-10.4 33.6-21h-13.4c-5 7.5-11.6 11.4-20.2 11.4-12.4 0-22.4-8.6-24.3-21.9h59.7zm-35.4-31.5c13.3 0 22.9 10.7 22.9 21.9h-47.2c1.9-13.3 11.9-21.9 24.3-21.9z"
+        />
+      </svg>
+    ),
+  },
+  /* {
     title: "Stripe",
     icon: (
       <svg
@@ -364,13 +379,13 @@ const tools = [
         </g>
       </svg>
     ),
-  },
+  }, */
   {
     title: "Auth.js",
     icon: (
       <svg
         viewBox="0 0 210 232"
-        className="w-12 h-12"
+        className="h-12 w-12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

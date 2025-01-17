@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import { NavUser } from "@/components/sidebar/nav-user";
 import { SidebarLayout, SidebarTrigger } from "@/components/ui/sidebar";
-import { user } from "@/config/site";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -28,14 +27,14 @@ export default async function DashboardLayout({
       defaultOpen={cookies().get("sidebar:state")?.value === "true"}
     >
       <AppSidebar />
-      <main className="flex flex-col flex-1 font-geist-sans transition-all duration-300 ease-in-out">
-        <header className="flex justify-between px-2 py-2 border-b">
+      <main className="font-geist-sans flex flex-1 flex-col transition-all duration-300 ease-in-out">
+        <header className="flex justify-between border-b px-2 py-2">
           <SidebarTrigger />
-          <div className="flex justify-end min-w-56">
-            <NavUser user={user} side="bottom" />
+          <div className="flex min-w-56 justify-end">
+            <NavUser user={data.user} side="bottom" />
           </div>
         </header>
-        <div className="p-2 h-full">{children}</div>
+        <div className="h-full p-2">{children}</div>
       </main>
     </SidebarLayout>
   );

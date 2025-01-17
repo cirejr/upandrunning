@@ -18,23 +18,19 @@ export function PriceAmount({
   value,
 }: Props) {
   return (
-    <div className="mt-6 flex flex-col px-8">
+    <div className="mt-6 flex flex-col">
       {loading ? (
         <Skeleton className="h-[30px] w-full bg-border" />
       ) : (
-        <>
-          <div
-            className={cn(
-              "text-[80px] leading-[30px] tracking-[-1.6px] font-medium"
-            )}
-          >
+        <div className="flex gap-4">
+          <div className={cn("leading-[30px] tracking-[-1.6px] font-medium")}>
             {tier.priceId &&
               priceMap[tier.priceId[value]]?.replace(/\.00$/, "")}
           </div>
-          <div className={cn("font-medium leading-[12px] text-[12px]")}>
-            {priceSuffix}
+          <div className={cn("font-medium leading-[12px] text-[14px]")}>
+            {!tier.isEntreprise && priceSuffix}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

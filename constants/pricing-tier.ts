@@ -26,7 +26,7 @@ export const PricingTier: Tier[] = [
     featured: false,
     priceId: {
       month: "pri_01jh8ept6c8qgz34hy4gf53g8f",
-      year: "pri_01hsxyh9txq4rzbrhbyngkhy46",
+      year: "pri_01jh8ept6c8qgz34hy4gf53g8f",
     },
   },
   {
@@ -44,15 +44,15 @@ export const PricingTier: Tier[] = [
     featured: false,
     externalLink: "/templates",
     priceId: {
-      month: "pri_01jh8ept6c8qgz34hy4gf53g8f",
-      year: "pri_01hsxyh9txq4rzbrhbyngkhy46",
+      month: "pri_01jhp5qpc4jd7qd2wpxsjz002g",
+      year: "pri_01jhp5s1k07q87pqjas2kxdnd7",
     },
   },
   {
     name: "Pages/Dashboard",
     id: "pro",
     description:
-      "For those who want to focus on getting to business rather than UI design and front-end",
+      "Focus on getting to business rather than UI design and front-end",
     features: [
       "One time payment",
       "Private communication channel with 24-hour support response time",
@@ -66,7 +66,7 @@ export const PricingTier: Tier[] = [
     featured: true,
     priceId: {
       month: "pri_01jhjs6njm2cvk5k4jn9krtt7w",
-      year: "pri_01hsxyfysbzf90tkh2wqbfxwa5",
+      year: "pri_01jhp5fgzs6j692y1h62b37ab2",
     },
   },
   {
@@ -87,8 +87,8 @@ export const PricingTier: Tier[] = [
     externalLink: "/contacts",
     isEntreprise: true,
     priceId: {
-      month: "pri_01jh8ept6c8qgz34hy4gf53g8f",
-      year: "pri_01hsxyh9txq4rzbrhbyngkhy46",
+      month: "pri_01jhp5kx9bzqvxyvkqfagzxzvc",
+      year: "pri_01jhp5kx9bzqvxyvkqfagzxzvc",
     },
   },
 ];

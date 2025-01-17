@@ -72,12 +72,8 @@ export function CheckoutContents({ userEmail }: Props) {
   }, [paddle, priceId, quantity]);
 
   return (
-    <div
-      className={
-        "rounded-lg md:bg-background/80 md:backdrop-blur-[24px] md:p-10 md:pl-16 md:pt-16 md:min-h-[400px] flex flex-col justify-between relative"
-      }
-    >
-      <div className={"flex flex-col md:flex-row gap-8 md:gap-16"}>
+    <div className="relative z-50 flex flex-col justify-between rounded-lg pb-12 md:min-h-[400px] md:p-10 md:pl-16 md:pt-16 md:backdrop-blur-[24px]">
+      <div className={"flex flex-col gap-8 md:flex-row md:gap-16"}>
         <div className={"w-full md:w-[400px]"}>
           <PriceSection
             checkoutData={checkoutData}
@@ -86,7 +82,7 @@ export function CheckoutContents({ userEmail }: Props) {
           />
         </div>
         <div className={"min-w-[375px] lg:min-w-[535px]"}>
-          <div className={"text-base leading-[20px] font-semibold mb-8"}>
+          <div className={"mb-8 text-base font-semibold leading-[20px]"}>
             Payment details
           </div>
           <div className={"paddle-checkout-frame"} />

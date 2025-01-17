@@ -9,7 +9,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Provider } from "@supabase/supabase-js";
 
-import { signInWithOAuth, signInWithPassword } from "../auth/actions";
+import {
+  loginAnonymously,
+  signInWithOAuth,
+  signInWithPassword,
+} from "../auth/actions";
 import { GithubButton, GoogleButton } from "./social-login-buttons";
 import { loginSchema } from "./auth-schema";
 import { cn } from "@/lib/utils";
@@ -22,6 +26,7 @@ import { toast } from "sonner";
 
 import { FaSpinner } from "react-icons/fa6";
 import { MailIcon } from "lucide-react";
+import { LoadingScreen } from "@/app/(dashboard)/_components/loading-screen";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -29,6 +34,8 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 export function LoginForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [loadingButton, setLoadingButton] = React.useState<string | null>(null);
+  const [isAnonymousLoading, setIsAnonymousLoading] =
+    React.useState<boolean>(false);
   const router = useRouter();
   const {
     register,
@@ -65,6 +72,16 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     }
   });
 
+  function handleAnonymousLogin() {
+    setIsAnonymousLoading(true);
+    loginAnonymously().then((data) => {
+      if (data?.error) {
+        toast.error("Something went wrong. Please try again");
+      }
+    });
+    setIsAnonymousLoading(false);
+  }
+
   const handleOAuthLogin = async (provider: Provider) => {
     setIsLoading(true);
     setLoadingButton(provider);
@@ -76,13 +93,27 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
       setIsLoading(false);
       setLoadingButton(null);
     }
+    setIsLoading(false);
   };
+
+  if (isAnonymousLoading) {
+    return <LoadingScreen className="mt-0 h-full w-full py-12" />;
+  }
 
   return (
     <div className={cn("grid gap-6 dark w-full", className)} {...props}>
       <h1 className="text-3xl font-semibold">Welcome back,</h1>
       <p className="text-muted-foreground">Log in into your account</p>
       <Separator className="h-px w-full bg-border" />
+
+      <Button
+        onClick={() => handleAnonymousLogin()}
+        type={"button"}
+        variant={"outline"}
+        className={"glass w-full"}
+      >
+        Log in as Guest
+      </Button>
 
       <GoogleButton
         isLoading={isLoading}
@@ -96,9 +127,9 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
         onClick={() => handleOAuthLogin("github")}
       />
 
-      <div className="flex items-center justify-between gap-3 w-full ">
+      <div className="flex w-full items-center justify-between gap-3">
         <Separator className="h-px w-1/4 bg-border" />
-        <p className="px-2 text-muted-foreground text-xs uppercase w-fit">
+        <p className="w-fit px-2 text-xs uppercase text-muted-foreground">
           Or continue with
         </p>
         <Separator className="h-px w-1/4 bg-border" />

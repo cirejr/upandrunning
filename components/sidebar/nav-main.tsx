@@ -43,30 +43,32 @@ export function NavMain({
             <div className="relative flex items-center">
               <Link
                 href={item.url}
-                className="flex flex-1 items-center gap-2 hover:bg-accent px-1.5 rounded-md ring-ring focus-visible:ring-2 min-w-8 h-8 font-medium text-sm hover:text-accent-foreground transition-all overflow-hidden outline-none"
+                className="flex h-8 min-w-8 flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium outline-none ring-ring transition-all hover:bg-accent hover:text-accent-foreground focus-visible:ring-2"
               >
-                <item.icon className="w-4 h-4 shrink-0" />
+                <item.icon className="h-4 w-4 shrink-0" />
                 <div className="flex flex-1 overflow-hidden">
                   <div className="line-clamp-1 pr-6">{item.title}</div>
                 </div>
               </Link>
-              <CollapsibleTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="right-1 absolute p-0 rounded-md ring-ring focus-visible:ring-2 w-6 h-6 transition-all data-[state=open]:rotate-90"
-                >
-                  <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                  <span className="sr-only">Toggle</span>
-                </Button>
-              </CollapsibleTrigger>
+              {item.items && (
+                <CollapsibleTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="absolute right-1 h-6 w-6 rounded-md p-0 ring-ring transition-all focus-visible:ring-2 data-[state=open]:rotate-90"
+                  >
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                    <span className="sr-only">Toggle</span>
+                  </Button>
+                </CollapsibleTrigger>
+              )}
             </div>
             <CollapsibleContent className="px-4 py-0.5">
-              <ul className="grid px-2 border-l">
+              <ul className="grid border-l px-2">
                 {item.items?.map((subItem) => (
                   <li key={subItem.title}>
                     <Link
                       href={subItem.url}
-                      className="flex items-center gap-2 hover:bg-accent px-2 rounded-md ring-ring focus-visible:ring-2 min-w-8 h-8 font-medium text-muted-foreground text-sm hover:text-accent-foreground transition-all overflow-hidden"
+                      className="flex h-8 min-w-8 items-center gap-2 overflow-hidden rounded-md px-2 text-sm font-medium text-muted-foreground ring-ring transition-all hover:bg-accent hover:text-accent-foreground focus-visible:ring-2"
                     >
                       <div className="line-clamp-1">{subItem.title}</div>
                     </Link>
@@ -95,28 +97,28 @@ export function SidebarSearch({
   if (isMobile) {
     return (
       <Drawer>
-        <DrawerTrigger className="flex flex-1 items-center gap-2 data-[state=open]:bg-accent hover:bg-accent px-1.5 rounded-md ring-ring focus-visible:ring-2 w-full min-w-8 h-8 font-medium text-sm data-[state=open]:text-accent-foreground hover:text-accent-foreground transition-all overflow-hidden outline-none">
-          <Search className="w-4 h-4 shrink-0" />
+        <DrawerTrigger className="flex h-8 w-full min-w-8 flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium outline-none ring-ring transition-all hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
+          <Search className="h-4 w-4 shrink-0" />
           <div className="flex flex-1 overflow-hidden">
             <div className="line-clamp-1 pr-6">Search</div>
           </div>
         </DrawerTrigger>
         <DrawerContent>
           <form>
-            <div className="p-2.5 border-b">
+            <div className="border-b p-2.5">
               <Input
                 type="search"
                 placeholder="Search..."
-                className="shadow-none rounded-sm focus-visible:ring-0 h-8"
+                className="h-8 rounded-sm shadow-none focus-visible:ring-0"
               />
             </div>
           </form>
-          <div className="gap-1 grid p-1.5 text-sm">
+          <div className="grid gap-1 p-1.5 text-sm">
             {results.map((result) => (
               <Link
                 href={result.url}
                 key={result.title}
-                className="hover:bg-accent p-2.5 rounded-md ring-ring focus-visible:ring-2 hover:text-accent-foreground outline-none"
+                className="rounded-md p-2.5 outline-none ring-ring hover:bg-accent hover:text-accent-foreground focus-visible:ring-2"
               >
                 <div className="font-medium">{result.title}</div>
                 <div className="line-clamp-2 text-muted-foreground">
@@ -127,7 +129,7 @@ export function SidebarSearch({
             <Separator className="my-1.5" />
             <Link
               href="#"
-              className="px-2.5 py-1 rounded-md ring-ring focus-visible:ring-2 text-muted-foreground hover:text-foreground outline-none"
+              className="rounded-md px-2.5 py-1 text-muted-foreground outline-none ring-ring hover:text-foreground focus-visible:ring-2"
             >
               See all results
             </Link>
@@ -139,8 +141,8 @@ export function SidebarSearch({
 
   return (
     <Popover>
-      <PopoverTrigger className="flex flex-1 items-center gap-2 data-[state=open]:bg-accent hover:bg-accent px-1.5 rounded-md ring-ring focus-visible:ring-2 w-full min-w-8 h-8 font-medium text-sm data-[state=open]:text-accent-foreground hover:text-accent-foreground transition-all overflow-hidden outline-none">
-        <Search className="w-4 h-4 shrink-0" />
+      <PopoverTrigger className="flex h-8 w-full min-w-8 flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium outline-none ring-ring transition-all hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
+        <Search className="h-4 w-4 shrink-0" />
         <div className="flex flex-1 overflow-hidden">
           <div className="line-clamp-1 pr-6">Search</div>
         </div>
@@ -149,23 +151,23 @@ export function SidebarSearch({
         side="right"
         align="start"
         sideOffset={4}
-        className="p-0 w-96"
+        className="w-96 p-0"
       >
         <form>
-          <div className="p-2.5 border-b">
+          <div className="border-b p-2.5">
             <Input
               type="search"
               placeholder="Search..."
-              className="shadow-none rounded-sm focus-visible:ring-0 h-8"
+              className="h-8 rounded-sm shadow-none focus-visible:ring-0"
             />
           </div>
         </form>
-        <div className="gap-1 grid p-1.5 text-sm">
+        <div className="grid gap-1 p-1.5 text-sm">
           {results.map((result) => (
             <Link
               href={result.url}
               key={result.title}
-              className="hover:bg-accent p-2.5 rounded-md ring-ring focus-visible:ring-2 hover:text-accent-foreground outline-none"
+              className="rounded-md p-2.5 outline-none ring-ring hover:bg-accent hover:text-accent-foreground focus-visible:ring-2"
             >
               <div className="font-medium">{result.title}</div>
               <div className="line-clamp-2 text-muted-foreground">
@@ -176,7 +178,7 @@ export function SidebarSearch({
           <Separator className="my-1.5" />
           <Link
             href="#"
-            className="px-2.5 py-1 rounded-md ring-ring focus-visible:ring-2 text-muted-foreground hover:text-foreground outline-none"
+            className="rounded-md px-2.5 py-1 text-muted-foreground outline-none ring-ring hover:text-foreground focus-visible:ring-2"
           >
             See all results
           </Link>

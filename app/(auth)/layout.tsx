@@ -26,11 +26,11 @@ export default function AuthLayout({
       <div className='bg-gradient-transparent flex h-2/3 w-full items-center justify-center self-center py-14 md:border-b md:border-t'>
         <Separator
           orientation='vertical'
-          className='absolute left-[15px] top-[100px] z-20 hidden h-[45rem] w-[0.5px] md:left-[25px] md:block md:h-[50rem] lg:left-[257px]'
+          className='absolute left-[15px] top-[100px] z-20 hidden h-[45rem] w-[1px] md:left-[25px] md:block md:h-[50rem] lg:left-[257px]'
         />
         <Separator
           orientation='vertical'
-          className='absolute right-[15px] top-[100px] z-20 hidden h-[25rem] w-[0.5px] md:right-[25px] md:block md:h-[50rem] lg:right-[257px]'
+          className='absolute right-[15px] top-[100px] z-20 hidden h-[25rem] w-[1px] md:right-[25px] md:block md:h-[50rem] lg:right-[257px]'
         />
         {children}
       </div>
