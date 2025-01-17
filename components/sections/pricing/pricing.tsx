@@ -4,12 +4,12 @@ import { PricingTier, Tier } from "@/constants/pricing-tier";
 import { usePaddlePrices } from "@/hooks/use-paddle-prices";
 import { Environments, initializePaddle, Paddle } from "@paddle/paddle-js";
 import { useEffect, useState } from "react";
-import { PricingCard } from "./pricing/pricing-card";
+import { PricingCard } from "./pricing-card";
 import {
   BillingFrequency,
   IBillingFrequency,
 } from "@/constants/billing-frequency";
-import { Toggle } from "./pricing/toggle";
+import { Toggle } from "./toggle";
 
 export default function PricingSection({
   country = "US",
@@ -56,7 +56,7 @@ export default function PricingSection({
             </div>
           </div>
           <Toggle frequency={frequency} setFrequency={setFrequency} />
-          <div className="grid gap-px md:grid-cols-4">
+          <div className="grid gap-px md:grid-cols-2 lg:grid-cols-4">
             {PricingTier.map((tier, index) => (
               <PricingCard
                 loading={loading}

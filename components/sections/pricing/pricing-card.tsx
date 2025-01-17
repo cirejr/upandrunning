@@ -27,7 +27,7 @@ export function PricingCard({
     <div
       className={`flex flex-col ${
         isFirst
-          ? "rounded-tl-lg rounded-bl-lg border-r"
+          ? "rounded-tl-lg rounded-bl-lg md:border-r "
           : isLast
           ? "rounded-tr-lg rounded-br-lg"
           : ""
@@ -46,14 +46,14 @@ export function PricingCard({
         priceSuffix={frequency.priceSuffix}
         description={tier.description}
       />
-      <Separator />
+      <Separator className={`${tier.featured && "mt-4 sm:mt-0 "}`} />
       <div className="flex flex-grow flex-col p-6">
         <PricingFeatures features={tier.features} highlighted={tier.featured} />
         {tier.externalLink ? (
           <Button variant="outline" asChild>
             <Link
               href={tier.externalLink}
-              className={`mt-6 rounded-lg border-primary px-4 py-2 font-semibold transition-colors w-full hover:bg-primary hover:text-background`}
+              className={`mt-6 w-full rounded-lg border-primary px-4 py-2 font-semibold transition-colors hover:bg-primary hover:text-background`}
             >
               {tier.isEntreprise ? "Contact our team" : "Browse templates"}
             </Link>

@@ -20,7 +20,7 @@ export function PricingHeader({
   description,
 }: Props) {
   return (
-    <div className="h-[180px] p-6">
+    <div className={`h-[180px] p-6 ${tier.featured && "mb-6 sm:mb-0"}`}>
       <h3 className="mb-2 text-xl font-bold text-primary">{name}</h3>
       <div className="mb-2 text-3xl font-bold">
         <PriceAmount
@@ -31,7 +31,7 @@ export function PricingHeader({
           priceSuffix={priceSuffix}
         />
       </div>
-      <p className="text-sm text-muted-foreground">{description}</p>
+      <p className="mb-4 text-sm text-muted-foreground">{description}</p>
     </div>
   );
 }

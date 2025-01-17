@@ -26,6 +26,7 @@ import { toast } from "sonner";
 
 import { FaSpinner } from "react-icons/fa6";
 import { MailIcon } from "lucide-react";
+import { LoadingScreen } from "@/app/(dashboard)/_components/loading-screen";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -33,6 +34,8 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 export function LoginForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [loadingButton, setLoadingButton] = React.useState<string | null>(null);
+  const [isAnonymousLoading, setIsAnonymousLoading] =
+    React.useState<boolean>(false);
   const router = useRouter();
   const {
     register,
@@ -70,11 +73,13 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
   });
 
   function handleAnonymousLogin() {
+    setIsAnonymousLoading(true);
     loginAnonymously().then((data) => {
       if (data?.error) {
         toast.error("Something went wrong. Please try again");
       }
     });
+    setIsAnonymousLoading(false);
   }
 
   const handleOAuthLogin = async (provider: Provider) => {
@@ -88,7 +93,12 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
       setIsLoading(false);
       setLoadingButton(null);
     }
+    setIsLoading(false);
   };
+
+  if (isAnonymousLoading) {
+    return <LoadingScreen className="mt-0 h-full w-full py-12" />;
+  }
 
   return (
     <div className={cn("grid gap-6 dark w-full", className)} {...props}>
@@ -96,14 +106,14 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
       <p className="text-muted-foreground">Log in into your account</p>
       <Separator className="h-px w-full bg-border" />
 
-      {/* <Button
+      <Button
         onClick={() => handleAnonymousLogin()}
         type={"button"}
         variant={"outline"}
         className={"glass w-full"}
       >
         Log in as Guest
-      </Button> */}
+      </Button>
 
       <GoogleButton
         isLoading={isLoading}

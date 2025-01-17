@@ -72,5 +72,5 @@ export async function loginAnonymously() {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/dashboard");
 }

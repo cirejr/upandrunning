@@ -67,7 +67,7 @@ const grid = [
   {
     title: "Payment Gateway",
     description:
-      "Out-of-the-box Stripe integration for handling payments, subscriptions, and billing with minimal setup.",
+      "Out-of-the-box Paddle integration for handling payments, subscriptions, and billing with minimal setup.",
     icon: <FaCreditCard />,
   },
   {

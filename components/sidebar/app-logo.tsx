@@ -7,12 +7,12 @@ export default function AppLogo({
 }) {
   return (
     <div className="flex items-start gap-2 px-1.5">
-      <div className="flex justify-center items-center bg-primary rounded-sm w-8 h-8 text-primary-foreground">
-        <team.logo className="w-5 h-5 shrink-0" />
+      <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-primary text-primary-foreground">
+        <team.logo className="h-5 w-5 shrink-0" />
       </div>
-      <div className="flex-1 grid leading-tight">
+      <div className="grid flex-1 leading-tight">
         <div className="line-clamp-1 font-medium">{team.name}</div>
-        <div className="text-muted-foreground text-xs overflow-hidden">
+        <div className="overflow-hidden text-xs text-muted-foreground">
           <div className="line-clamp-1">{team.plan}</div>
         </div>
       </div>
