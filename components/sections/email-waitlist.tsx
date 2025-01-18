@@ -1,22 +1,42 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 
 export default function EmailWaitlist() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    toast.success("You're on the list!");
-    setEmail("");
-    setIsLoading(false);
-  };
+    try {
+      const formData = new FormData();
+      formData.append("email", email);
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit the data. Please try again.");
+      }
+
+      setEmail("");
+      toast.success("You're on the list!");
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setError(e.message);
+        toast.error(error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <section className="bg-gradient-transparent relative w-full border-b border-t py-12 md:py-24 lg:py-32">
       <Separator
@@ -39,15 +59,12 @@ export default function EmailWaitlist() {
             </p>
           </div>
           <div className="w-full max-w-2xl space-y-2 px-2 md:px-0">
-            <form
-              onSubmit={handleSubmit}
-              className="mt-8 justify-center sm:flex"
-            >
+            <form onSubmit={onSubmit} className="mt-8 justify-center sm:flex">
               <Input
                 type="email"
                 required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value as string)}
                 placeholder="Enter your email"
                 className="glass w-full px-5 py-3"
                 aria-label="Email address"
