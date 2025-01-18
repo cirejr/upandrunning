@@ -44,12 +44,11 @@ export function CheckoutContents({ userEmail }: Props) {
         checkout: {
           settings: {
             displayMode: "inline",
-            theme: "dark",
+            theme: "light",
             allowLogout: !userEmail,
             frameTarget: "paddle-checkout-frame",
             frameInitialHeight: 450,
-            frameStyle:
-              "width: 100%; background-color: transparent; border: none",
+            frameStyle: "width: 100%; ; border: none",
             successUrl: "/checkout/success",
           },
         },
