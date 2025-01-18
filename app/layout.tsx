@@ -17,6 +17,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta property="og:image" content="/opengraph-image.png" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content="/twitter-image.png" />
+      <meta name="twitter:image:type" content="image/png" />
+      <meta name="twitter:image:width" content="1200" />
+      <meta name="twitter:image:height" content="630" />
+      <meta name="twitter:title" content="Up And Running" />
+      <meta
+        name="twitter:description"
+        content="Get up and running with Next.js in minutes."
+      />
+      <meta name="twitter:site" content="@cirejr_" />
       <body
         className={cn("font-geist-sans overflow-x-hidden", GeistSans.className)}
       >
