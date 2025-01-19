@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <meta
         property="og:image"
-        content="https://upandrunning.vercel.app/opengraph-image.png"
+        content="https://grlzdoaweluacbnheths.supabase.co/storage/v1/object/public/meta-images/opengraph-image.png"
       />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
@@ -28,7 +28,7 @@ export default function RootLayout({
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:image"
-        content="https://upandrunning.vercel.app/opengraph-image.png"
+        content="https://grlzdoaweluacbnheths.supabase.co/storage/v1/object/public/meta-images/twitter-image.png"
       />
       <meta name="twitter:image:type" content="image/png" />
       <meta name="twitter:image:width" content="1200" />
